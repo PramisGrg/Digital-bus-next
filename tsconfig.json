@@ -21,6 +21,18 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/register/page.jsx", "app/login/page.jsx", "components/Navbar.jsx"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "app/admin-register/page.jsx",
+    "app/user-register/page.jsx",
+    "components/Navbar.jsx",
+    "app/admin-login/page.jsx",
+    "app/dashboard/page.jsx",
+    "app/page.jsx",
+    "app/about/page.jsx"
+  ],
   "exclude": ["node_modules"]
 }

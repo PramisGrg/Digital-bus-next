@@ -1,14 +1,17 @@
 "use client";
-import React, { FormEvent, use, useState } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import Image from "next/image";
 import BusStation from "@/assets/images/insidethebus.jpeg";
 import { ToastContainer, toast } from "react-toastify";
 import { useRouter } from "next/navigation";
 
-export default function LoginPage() {
+export default function RegisterPage() {
   const [state, setState] = useState({
+    username: "",
+    email: "",
     phoneNumber: "",
+    citizenshipNumber: "",
     password: "",
   });
   const router = useRouter();
@@ -16,22 +19,25 @@ export default function LoginPage() {
     setState({ ...state, [e.target.name]: e.target.value });
   };
 
-  const handleLoginForm = async (e) => {
+  const handleSubmitForm = async (e) => {
     e.preventDefault();
     const userData = {
+      username: state.username,
+      email: state.email,
       phoneNumber: state.phoneNumber,
       password: state.password,
     };
+    console.log(userData);
     try {
       const response = await axios.post(
-        "https://sahaj-yatra-api.onrender.com/api/v1/auth/login/",
+        "https://sahaj-yatra-api.onrender.com/api/v1/auth/register/admin/",
         userData
       );
 
-      if (response?.status === 200) {
+      if (response?.status === 201) {
         toast.success(response?.data?.message, {
           onClose: () => {
-            // router.push("/dashboard");
+            router.push("/admin-login");
           },
         });
       }
@@ -51,7 +57,7 @@ export default function LoginPage() {
       <ToastContainer />
       <section className="min-h-screen py-20 bg-gradient-to-r from-sky-500 to-indigo-200 ">
         <div className="container mx-auto">
-          <div className="items-center flex flex-col lg:flex-row w-10/12 lg:w-8/12 bg-white rounded-xl mx-auto shadow-lg overflow-hidden">
+          <div className="flex flex-col lg:flex-row w-10/12 lg:w-8/12 bg-white rounded-xl mx-auto shadow-lg overflow-hidden">
             <div className="w-full lg:w-1/2 flex flex-col items-center justify-center p-12 bg-no-repeat bg-cover bg-center">
               <Image
                 width={1000}
@@ -61,9 +67,30 @@ export default function LoginPage() {
               />
             </div>
             <div className="w-full lg:w-1/2 py-16 px-12">
-              <h2 className="text-3xl mb-4">Login</h2>
-              <p className="mb-4">Login to your account</p>
-              <form onSubmit={handleLoginForm}>
+              <h2 className="text-3xl mb-4">Register</h2>
+              <p className="mb-4">
+                Create your account. It’s free and only take a minute
+              </p>
+              <form onSubmit={handleSubmitForm}>
+                <div>
+                  <input
+                    type="text"
+                    placeholder="Username"
+                    className="w-full border border-gray-400 py-1 px-2 mr-2"
+                    onChange={handleStateChange}
+                    name="username"
+                  ></input>
+                </div>
+                <div className="mt-5">
+                  <input
+                    type="text"
+                    placeholder="Email"
+                    className="border border-gray-400 py-1 px-2 w-full"
+                    onChange={handleStateChange}
+                    name="email"
+                  ></input>
+                </div>
+
                 <div className="mt-5">
                   <input
                     type="tel"
@@ -73,6 +100,7 @@ export default function LoginPage() {
                     name="phoneNumber"
                   ></input>
                 </div>
+
                 <div className="mt-5">
                   <input
                     type="password"
@@ -88,22 +116,12 @@ export default function LoginPage() {
                     className="border border-gray-400"
                   ></input>
                 </div>
-                <span>
-                  I accept the{" "}
-                  <a href="#" className="text-blue-500 font-semibold">
-                    Terms of Use
-                  </a>{" "}
-                  &{" "}
-                  <a href="#" className="text-blue-500 font-semibold">
-                    Privacy Policy
-                  </a>
-                </span>
                 <div className="mt-5">
                   <button
                     type="submit"
                     className="w-full bg-blue-600 text-white hover:bg-blue-400 font-bold py-2 px-4 mt-3 rounded items-center my-2 hover:scale-105 duration-300"
                   >
-                    Login
+                    Register Now
                   </button>
                 </div>
               </form>

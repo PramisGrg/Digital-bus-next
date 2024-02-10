@@ -38,7 +38,7 @@ export default function RegisterPage() {
       if (response?.status === 201) {
         toast.success(response?.data?.message, {
           onClose: () => {
-            router.push("/login");
+            router.push("/");
           },
         });
       }
@@ -68,7 +68,7 @@ export default function RegisterPage() {
               />
             </div>
             <div className="w-full lg:w-1/2 py-16 px-12">
-              <h2 className="text-3xl mb-4">Register</h2>
+              <h2 className="text-3xl mb-4">User Register</h2>
               <p className="mb-4">
                 Create your account. It’s free and only take a minute
               </p>

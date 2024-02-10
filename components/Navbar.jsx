@@ -35,8 +35,9 @@ export default function Navbar() {
           </div>
           <div className="hidden md:block">
             <div className="ml-10 flex items-baseline space-x-4">
-              {navlinks.map((x) => (
+              {navlinks.map((x, index) => (
                 <Link
+                  key={index}
                   href={x.link}
                   className="text-xl text-gray-700 transition-all duration-500 hover:bg-blue-600 hover:text-white mt-2 px-3 py-2 rounded-md text-md cursor-pointer"
                 >
