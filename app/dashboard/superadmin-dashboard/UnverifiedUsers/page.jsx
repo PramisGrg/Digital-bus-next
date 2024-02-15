@@ -1,12 +1,12 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import RfID from "@/app/ui/RfID";
-import Link from "next/link";
+import { usePathname, useSearchParams } from "next/navigation";
 
 const Page = () => {
+  const pathname = usePathname();
   const [unverified, setUnverified] = useState([]);
-  const [selectedUser, setSelectedUser] = useState(null);
+  const [searchParams] = useSearchParams();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -23,18 +23,22 @@ const Page = () => {
     fetchData();
   }, []);
 
-  const Handlebtn = async (userID) => {
+  const Handlebtn = (userID) => {
     console.log(userID);
-    setSelectedUser(userID);
-    // try {
-    //   const response = await axios.post(
-    //     `https://sahaj-yatra-api.onrender.com/api/v1/user/${userID}/verify/`
-    //   );
-    //   console.log(response);
-    // } catch (error) {
-    //   console.log(error);
-    // }
+    const params = new URLSearchParams(window.location.search);
+    params.set("userID", userID);
+    window.location.href =
+      "/dashboard/superadmin-dashboard/UnverifiedUsers/Popup?" +
+      params.toString();
   };
+  // try{
+  //   const response = await axios.post(
+  //     `https://sahaj-yatra-api.onrender.com/api/v1/user/${userID}/verify/`
+  //   );
+  //   console.log(response);
+  // } catch (error) {
+  //   console.log(error);
+  // }
 
   return (
     <div className="container mx-auto p-6">
@@ -52,17 +56,16 @@ const Page = () => {
           <tbody>
             {unverified.map((user) => (
               <tr className="bg-blue-200" key={user.id}>
-                <td className="border px-6 py-4">{user.username}</td>
-                <td className="border px-6 py-4">{user.email}</td>
-                <td className="border px-6 py-4">{user.phoneNumber}</td>
-                <td className="border px-6 py-4">
-                  <Link
-                    href="/dashboard/superadmin-dashboard/UnverifiedUsers/Popup"
+                <td className="border px-6 py-3">{user.username}</td>
+                <td className="border px-6 py-3">{user.email}</td>
+                <td className="border px-6 py-3">{user.phoneNumber}</td>
+                <td className="border px-6 py-3">
+                  <button
                     className=" bg-blue-600 text-white hover:bg-blue-400 font-bold py-2 px-4 mt-3 rounded items-center my-2 hover:scale-105 duration-300"
                     onClick={() => Handlebtn(user._id)}
                   >
                     Verify
-                  </Link>
+                  </button>
                 </td>
               </tr>
             ))}

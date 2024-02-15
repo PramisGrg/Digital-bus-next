@@ -4,9 +4,11 @@ import KhaltiCheckout from "khalti-checkout-web";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
+import { useRouter } from "next/navigation";
 
 const verifyPayment = async (payload) => {
   try {
+    const router = useRouter();
     const response = await axios.post(
       "https://sahaj-yatra-api.onrender.com/api/v1/transaction/verify-payment/",
       // "http://172.0.18.89:8000/api/v1/transaction/verify-payment",
@@ -15,7 +17,11 @@ const verifyPayment = async (payload) => {
     console.log(response);
     console.log(response?.status);
     if (response?.status === 200) {
-      toast.success(response?.data?.message);
+      toast.success(response?.data?.message, {
+        onClose: () => {
+          router.push("/dashboard/admin-dashboard");
+        },
+      });
     }
   } catch (error) {
     toast.error(error?.message);
@@ -78,24 +84,24 @@ const Page = () => {
     <>
       <ToastContainer />
       <div className="min-h-screen w-full flex items-center justify-center">
-        <div className="">
-          <h1>Payment</h1>
-          <div className="flex flex-col items-center justify-center">
-            <form>
-              <input
-                placeholder="enter amount "
-                className="w-full block px-2 py-2 inline-block border rounded-md"
-              ></input>
-              <button
-                type="submit"
-                id="payment-button"
-                onClick={btnOnClick}
-                className="w-full px-2 py-2 w-full bg-blue-600 text-white hover:bg-blue-400 font-bold py-2 px-4 mt-3 rounded items-center my-2 hover:scale-105 duration-300"
-              >
-                Pay with khalti
-              </button>
-            </form>
-          </div>
+        <div className="mr-8 flex-cols">
+          <h1 className="text-4xl">Payment: </h1>
+        </div>
+        <div className="flex flex-col items-center justify-center">
+          <form>
+            <input
+              placeholder="enter amount "
+              className="w-full p-4 inline-block border rounded-md"
+            ></input>
+            <button
+              type="submit"
+              id="payment-button"
+              onClick={btnOnClick}
+              className=" w-full px-2 py-2 bg-blue-600 text-white hover:bg-blue-400 font-bold mt-10 rounded items-center my-2 hover:scale-105 duration-300"
+            >
+              Pay with khalti
+            </button>
+          </form>
         </div>
       </div>
     </>

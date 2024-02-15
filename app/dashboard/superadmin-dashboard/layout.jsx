@@ -8,7 +8,7 @@ const layout = ({ children }) => {
         <Sidebar />
       </div>
       <div>
-        <div className="flex h-screen justify-center">{children}</div>
+        <div className="flex h-screen pl-96">{children}</div>
       </div>
     </div>
   );

@@ -3,15 +3,15 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 const Page = () => {
-  const [verified, setVerified] = useState([]);
+  const [bus, setBus] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "https://sahaj-yatra-api.onrender.com/api/v1/user/verified"
+          "https://sahaj-yatra-api.onrender.com/api/v1/bus"
         );
-        const list = response?.data;
-        setVerified(list);
+        const busList = response?.data?.data;
+        setBus(busList);
       } catch (error) {
         console.log(error);
       }
@@ -26,21 +26,19 @@ const Page = () => {
         <table className="table-auto border-collapse border w-full">
           <thead>
             <tr className="py-4 bg-blue-400">
-              <th className="px-6 py-4">Name</th>
-              <th className="px-6 py-4">Email</th>
-              <th className="px-6 py-4">Phone Number</th>
-              <th className="px-8 py-4">Amount</th>
-              <th className="px-8 py-4">RFID Number</th>
+              <th className="px-6 py-4">Bus Number</th>
+              <th className="px-6 py-4">Bus Type</th>
+              <th className="px-6 py-4">Bus Route</th>
+              <th className="px-8 py-4">Bus Seats</th>
             </tr>
           </thead>
           <tbody>
-            {verified.map((user) => (
+            {bus.map((user) => (
               <tr className="bg-blue-200" key={user.id}>
-                <td className="border px-6 py-3">{user.username}</td>
-                <td className="border px-6 py-3">{user.email}</td>
-                <td className="border px-6 py-3">{user.phoneNumber}</td>
-                <td className="border px-6 py-3">{user.amount}</td>
-                <td className="border px-6 py-3">{user.rfidNumber}</td>
+                <td className="border px-6 py-3">{user.busNumber}</td>
+                <td className="border px-6 py-3">{user.busType}</td>
+                <td className="border px-6 py-3">{user.busRoute}</td>
+                <td className="border px-6 py-3">{user.busSeats}</td>
               </tr>
             ))}
           </tbody>

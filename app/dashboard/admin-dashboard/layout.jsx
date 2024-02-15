@@ -7,7 +7,7 @@ const layout = ({ children }) => {
       <div className=" bg-blue-100">
         <Sidebar />
       </div>
-      <div className="">{children}</div>
+      <div className="pl-96 pt-24">{children}</div>
     </div>
   );
 };

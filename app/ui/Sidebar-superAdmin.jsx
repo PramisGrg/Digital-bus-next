@@ -1,12 +1,8 @@
 import React from "react";
 import MenuLink from "@/app/ui/MenuLink";
 
-import {
-  MdDashboard,
-  MdSupervisedUserCircle,
-  MdShoppingBag,
-  MdAttachMoney,
-} from "react-icons/md";
+import { MdDashboard } from "react-icons/md";
+import { FaUser, FaUserLock, FaUserCheck } from "react-icons/fa";
 
 const menuItems = [
   {
@@ -20,17 +16,17 @@ const menuItems = [
       {
         title: "Users",
         path: "/dashboard/superadmin-dashboard/Users",
-        icon: <MdSupervisedUserCircle />,
+        icon: <FaUser />,
       },
       {
         title: "Unverified Users",
         path: "/dashboard/superadmin-dashboard/UnverifiedUsers",
-        icon: <MdShoppingBag />,
+        icon: <FaUserLock />,
       },
       {
         title: "Verified Users",
         path: "/dashboard/superadmin-dashboard/VerifiedUsers",
-        icon: <MdAttachMoney />,
+        icon: <FaUserCheck />,
       },
     ],
   },

@@ -32,7 +32,7 @@
     "app/admin-login/page.jsx",
     "app/dashboard/page.jsx",
     "app/page.jsx",
-    "app/about/page.jsx"
-  ],
+    "app/superAdmin/page.jsx"
+, "app/layout.jsx", ".next/types/app/dashboard/page.jsx"  ],
   "exclude": ["node_modules"]
 }

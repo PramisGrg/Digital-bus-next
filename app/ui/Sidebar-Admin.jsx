@@ -4,11 +4,12 @@ import MenuLink from "@/app/ui/MenuLink";
 import {
   MdDashboard,
   MdSupervisedUserCircle,
-  MdShoppingBag,
-  MdAttachMoney,
   MdWork,
   MdAnalytics,
 } from "react-icons/md";
+import { FaBus } from "react-icons/fa";
+import { GiBus } from "react-icons/gi";
+import { IoLocationOutline } from "react-icons/io5";
 
 const menuItems = [
   {
@@ -25,14 +26,19 @@ const menuItems = [
         icon: <MdSupervisedUserCircle className=" w-5 h-6" />,
       },
       {
-        title: "Products",
-        path: "/dashboard/admin-dashboard/products",
-        icon: <MdShoppingBag className=" w-5 h-6" />,
+        title: "Bus",
+        path: "/dashboard/admin-dashboard/Bus",
+        icon: <FaBus className=" w-5 h-6" />,
       },
       {
-        title: "Transactions",
-        path: "/dashboard/admin-dashboard/transactions",
-        icon: <MdAttachMoney className=" w-5 h-6" />,
+        title: "Bus Registration",
+        path: "/dashboard/admin-dashboard/BusRegistration",
+        icon: <GiBus className=" w-5 h-6" />,
+      },
+      {
+        title: "Bus Location ",
+        path: "/dashboard/admin-dashboard/BusLocation",
+        icon: <IoLocationOutline className=" w-5 h-6" />,
       },
     ],
   },
