@@ -7,8 +7,8 @@ const navlinks = [
     link: "/",
   },
   {
-    title: "About",
-    link: "/about",
+    title: "SuperAdmin Login",
+    link: "/superAdmin-login",
   },
   {
     title: "Balance Inquiry",

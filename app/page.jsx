@@ -37,7 +37,7 @@ export default function Home() {
 
         toast.success(response?.data?.message, {
           onClose: () => {
-            router.push("/dashboard/user");
+            router.push("/dashboard/user-dashboard");
           },
         });
       }
