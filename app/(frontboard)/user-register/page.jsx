@@ -45,9 +45,9 @@ export default function RegisterPage() {
       //   const { token } = response.data;
     } catch (error) {
       if (error?.response?.status === 400) {
-        toast.error(error?.response?.data?.error);
+        toast.error(error?.response?.data?.message);
       } else if (error?.response?.status === 409) {
-        toast.error(error?.response?.data?.error);
+        toast.error(error?.response?.data?.message);
       }
       console.log("registration failed: ", error);
     }
@@ -125,16 +125,7 @@ export default function RegisterPage() {
                     className="border border-gray-400"
                   ></input>
                 </div>
-                <span>
-                  I accept the{" "}
-                  <a href="#" className="text-blue-500 font-semibold">
-                    Terms of Use
-                  </a>{" "}
-                  &{" "}
-                  <a href="#" className="text-blue-500 font-semibold">
-                    Privacy Policy
-                  </a>
-                </span>
+
                 <div className="mt-5">
                   <button
                     type="submit"

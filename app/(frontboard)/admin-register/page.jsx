@@ -5,6 +5,7 @@ import Image from "next/image";
 import BusStation from "@/assets/images/insidethebus.jpeg";
 import { ToastContainer, toast } from "react-toastify";
 import { useRouter } from "next/navigation";
+import axiosInstance from "@/services/axios";
 
 export default function RegisterPage() {
   const [state, setState] = useState({
@@ -28,8 +29,8 @@ export default function RegisterPage() {
     };
     console.log(userData);
     try {
-      const response = await axios.post(
-        "https://sahaj-yatra-api.onrender.com/api/v1/auth/register/admin/",
+      const response = await axiosInstance.post(
+        "/auth/register/admin/",
         userData
       );
 
@@ -42,11 +43,7 @@ export default function RegisterPage() {
       }
       //   const { token } = response.data;
     } catch (error) {
-      if (error?.response?.status === 400) {
-        toast.error(error?.response?.data?.error);
-      } else if (error?.response?.status === 409) {
-        toast.error(error?.response?.data?.error);
-      }
+      toast.error(error?.response?.data?.message);
       console.log("registration failed: ", error);
     }
   };
@@ -66,7 +63,7 @@ export default function RegisterPage() {
               />
             </div>
             <div className="w-full lg:w-1/2 py-16 px-12">
-              <h2 className="text-3xl mb-4">Register</h2>
+              <h2 className="text-3xl mb-4">Admin Register</h2>
               <p className="mb-4">
                 Create your account. It’s free and only take a minute
               </p>
@@ -107,12 +104,6 @@ export default function RegisterPage() {
                     className="border border-gray-400 py-1 px-2 w-full"
                     onChange={handleStateChange}
                     name="password"
-                  ></input>
-                </div>
-                <div className="mt-5">
-                  <input
-                    type="checkbox"
-                    className="border border-gray-400"
                   ></input>
                 </div>
                 <div className="mt-5">

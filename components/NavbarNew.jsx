@@ -1,3 +1,5 @@
+import React from "react";
+
 import Link from "next/link";
 import { FaBusAlt } from "react-icons/fa";
 
@@ -16,7 +18,7 @@ const navlinks = [
   },
 ];
 
-export default function Navbar() {
+function NavbarNew() {
   return (
     <div className="shadow-lg w-full p-4">
       <div className="mx-auto px-4 sm:px-6 lg:px-8">
@@ -47,3 +49,5 @@ export default function Navbar() {
     </div>
   );
 }
+
+export default NavbarNew;

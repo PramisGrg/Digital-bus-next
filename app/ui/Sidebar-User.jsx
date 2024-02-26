@@ -1,12 +1,8 @@
 import React from "react";
 import MenuLink from "@/app/ui/MenuLink";
 
-import {
-  MdDashboard,
-  MdSupervisedUserCircle,
-  MdShoppingBag,
-  MdAttachMoney,
-} from "react-icons/md";
+import { MdDashboard, MdAttachMoney } from "react-icons/md";
+import { FaLocationDot } from "react-icons/fa6";
 
 const menuItems = [
   {
@@ -18,14 +14,9 @@ const menuItems = [
         icon: <MdDashboard />,
       },
       {
-        title: "Users",
-        path: "/dashboard/user-dashboard/users",
-        icon: <MdSupervisedUserCircle />,
-      },
-      {
-        title: "Products",
-        path: "/dashboard/user-dashboard/products",
-        icon: <MdShoppingBag />,
+        title: "Location",
+        path: "/dashboard/user-dashboard/location ",
+        icon: <FaLocationDot />,
       },
       {
         title: "Payment",
@@ -41,11 +32,13 @@ const Sidebar = () => {
     <div className="flex">
       <ul className="h-screen w-64 gap-4">
         {menuItems.map((cat) => (
-          <li className="h-2/5" key={cat.title}>
+          <li className="text-white h-2/5 mt-5" key={cat.title}>
             <div className="mt-2">
-              <span className="text-2xl my-4">{cat.title}</span>
+              <span className="mt-3 text-white text-3xl font-bold my-4">
+                {cat.title}
+              </span>
               {cat.list.map((item) => (
-                <MenuLink className="gap-2" item={item} key={item.title} />
+                <MenuLink className="gap-4" item={item} key={item.title} />
               ))}
             </div>
           </li>

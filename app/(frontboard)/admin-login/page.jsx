@@ -8,6 +8,8 @@ import { ToastContainer, toast } from "react-toastify";
 import { useRouter } from "next/navigation";
 import { setCookie } from "cookies-next";
 import Link from "next/link";
+import axiosInstance from "@/services/axios";
+import { getCookie } from "cookies-next";
 
 export default function Home() {
   const [state, setState] = useState({
@@ -19,6 +21,8 @@ export default function Home() {
     setState({ ...state, [e.target.name]: e.target.value });
   };
 
+  console.log(getCookie("token"));
+
   const handleLoginForm = async (e) => {
     e.preventDefault();
     const userData = {
@@ -26,10 +30,7 @@ export default function Home() {
       password: state.password,
     };
     try {
-      const response = await axios.post(
-        "https://sahaj-yatra-api.onrender.com/api/v1/auth/login/admin",
-        userData
-      );
+      const response = await axiosInstance.post("/auth/login/admin", userData);
 
       if (response?.status === 200) {
         setCookie("token", response?.data?.token, { maxAge: 60 * 60 * 24 });
@@ -41,13 +42,10 @@ export default function Home() {
           },
         });
       }
-      //   const { token } = response.data;
+      const { token } = response.data;
     } catch (error) {
-      if (error?.response?.status === 400) {
-        toast.error(error?.response?.data?.error);
-      } else if (error?.response?.status === 409) {
-        toast.error(error?.response?.data?.error);
-      }
+      toast.error(error?.response?.data?.message);
+
       console.log("registration failed: ", error);
     }
   };
@@ -112,7 +110,7 @@ export default function Home() {
                     Login
                   </button>
                 </div>
-                <div className="w-full bg-blue-600 text-white hover:bg-blue-400 font-bold py-2 px-4 mt-3 rounded items-center my-2 hover:scale-105 duration-300">
+                <div className="text-center w-full bg-blue-600 text-white hover:bg-blue-400 font-bold py-2 px-4 mt-3 rounded items-center my-2 hover:scale-105 duration-300">
                   <Link classname="text-center" href="/admin-register">
                     Register
                   </Link>

@@ -83,7 +83,7 @@ const Page = () => {
   return (
     <>
       <ToastContainer />
-      <div className="min-h-screen w-full flex items-center justify-center">
+      <div className="pl-96 min-h-screen w-full flex items-center justify-center">
         <div className="mr-8 flex-cols">
           <h1 className="text-4xl">Payment: </h1>
         </div>
