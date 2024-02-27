@@ -1,4 +1,6 @@
 "use client";
+"use client";
+
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import {
@@ -50,10 +52,8 @@ const Map = () => {
   }, []);
 
   const handleRouteChange = (RouteIndex) => {
-    if (typeof window !== "undefined") {
-      console.log(busRoutes.coordinates);
-      setCurrentCoord(busRoutes.coordinates[RouteIndex]); // Route 1 selected
-    }
+    console.log(busRoutes.coordinates);
+    setCurrentCoord(busRoutes.coordinates[RouteIndex]); // Route 1 selected
   };
 
   return (
