@@ -54,7 +54,7 @@ const Page = () => {
           </thead>
           <tbody>
             {unverified.map((user) => (
-              <tr className="bg-slate-200" key={user.id}>
+              <tr className="bg-slate-200" key={user._id}>
                 <td className="border px-6 py-3">{user.username}</td>
                 <td className="border px-6 py-3">{user.email}</td>
                 <td className="border px-6 py-3">{user.phoneNumber}</td>
