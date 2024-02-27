@@ -25,6 +25,7 @@ export default function RegisterPage() {
       busType: state.busType,
       busRoute: state.busRoute,
       busSeats: state.busSeats,
+      busOwner: state.busOwner,
     };
     console.log(userData);
     try {
@@ -91,6 +92,15 @@ export default function RegisterPage() {
                 className="rounded-md border border-gray-400 p-2 w-full"
                 onChange={handleStateChange}
                 name="busSeats"
+              ></input>
+            </div>
+            <div className="mt-5">
+              <input
+                type="text"
+                placeholder="Bus Owner"
+                className="rounded-md border border-gray-400 p-2 w-full"
+                onChange={handleStateChange}
+                name="busOwner"
               ></input>
             </div>
             <div className="mt-5">

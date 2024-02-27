@@ -21,12 +21,24 @@ const Page = () => {
     fetchData();
   }, []);
 
-  const Handlebtn = (userID) => {
+  const HandlebtnForVerify = (userID) => {
+    if (typeof window !== "undefined") {
+      // Your client-side code here
+      console.log(userID);
+      const params = new URLSearchParams(window.location.search);
+      params.set("userID", userID);
+      window.location.href =
+        "/dashboard/superadmin-dashboard/UnverifiedUsers/Popup?" +
+        params.toString();
+    }
+  };
+
+  const HandlebtnForInfo = (userID) => {
     console.log(userID);
     const params = new URLSearchParams(window.location.search);
     params.set("userID", userID);
     window.location.href =
-      "/dashboard/superadmin-dashboard/UnverifiedUsers/Popup?" +
+      "/dashboard/superadmin-dashboard/UnverifiedUsers/Info?" +
       params.toString();
   };
   // try{
@@ -49,6 +61,7 @@ const Page = () => {
               <th className="px-6 py-4">Email</th>
               <th className="px-6 py-4">Phone Number</th>
               <th className="px-8 py-4">Action</th>
+              <th className="px-8 py-4">View Info</th>
             </tr>
           </thead>
           <tbody>
@@ -60,9 +73,17 @@ const Page = () => {
                 <td className="border px-6 py-3">
                   <button
                     className=" bg-slate-800 text-white hover:bg-slate-500 font-bold py-2 px-4 mt-3 rounded items-center my-2 hover:scale-105 duration-300"
-                    onClick={() => Handlebtn(user._id)}
+                    onClick={() => HandlebtnForVerify(user._id)}
                   >
                     Verify
+                  </button>
+                </td>
+                <td className="border px-6 py-3">
+                  <button
+                    className=" bg-slate-800 text-white hover:bg-slate-500 font-bold py-2 px-4 mt-3 rounded items-center my-2 hover:scale-105 duration-300"
+                    onClick={() => HandlebtnForInfo(user._id)}
+                  >
+                    Info
                   </button>
                 </td>
               </tr>
