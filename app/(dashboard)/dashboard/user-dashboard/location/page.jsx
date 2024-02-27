@@ -11,7 +11,6 @@ import {
 import { useState, useEffect } from "react";
 import coordinates from "@/app/co-ordinates/map_2.json";
 import busIconUrl from "@/assets/bus_1.svg";
-import axios from "axios";
 
 const Map = () => {
   const [coord, setCoord] = useState([
@@ -51,8 +50,10 @@ const Map = () => {
   }, []);
 
   const handleRouteChange = (RouteIndex) => {
-    console.log(busRoutes.coordinates);
-    setCurrentCoord(busRoutes.coordinates[RouteIndex]); // Route 1 selected
+    if (typeof window !== "undefined") {
+      console.log(busRoutes.coordinates);
+      setCurrentCoord(busRoutes.coordinates[RouteIndex]); // Route 1 selected
+    }
   };
 
   return (

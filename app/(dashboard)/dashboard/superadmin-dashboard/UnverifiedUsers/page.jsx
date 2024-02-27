@@ -1,13 +1,12 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import axios from "axios";
-import { usePathname, useSearchParams } from "next/navigation";
+// import { usePathname, useSearchParams } from "next/navigation";
 import { axiosAuthInstance } from "@/services/axios";
 
 const Page = () => {
-  const pathname = usePathname();
+  // const pathname = usePathname();
   const [unverified, setUnverified] = useState([]);
-  const [searchParams] = useSearchParams();
+  // const [searchParams] = useSearchParams();
 
   useEffect(() => {
     const fetchData = async () => {
