@@ -1,5 +1,5 @@
 "use client";
-import axiosInstance, { axiosAuthInstance } from "@/services/axios";
+import { axiosAuthInstance } from "@/services/axios";
 import { useEffect, useState } from "react";
 import React from "react";
 import UserProfile from "@/assets/images/UserProfile.jpeg";
