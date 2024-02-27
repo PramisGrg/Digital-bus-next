@@ -1,19 +1,26 @@
-// import CustomMapContainer from "./CustomMapContainer";
+"use client";
 
-import dynamic from "next/dynamic";
+import L from "leaflet";
+import "leaflet/dist/leaflet.css";
+import {
+  MapContainer,
+  TileLayer,
+  Marker,
+  Popup,
+  Polyline,
+} from "react-leaflet";
+import { useState, useEffect } from "react";
+import coordinates from "@/app/co-ordinates/map_2.json";
+import busIconUrl from "@/assets/bus_1.svg";
 
-const CustomMapContainer = dynamic(() => import("./CustomMapContainer"), {
-  ssr: false,
-});
-
-const page = () => {
-  // const [coord, setCoord] = useState([
-  //   [28.261501948498378, 83.97219108030293],
-  //   [28.192351839123205, 84.02524121244574],
-  // ]);
-  // const [passenger_no, setPassenger_no] = useState([]);
-  // const [currentCoord, setCurrentCoord] = useState([]);
-  // const busRoutes = coordinates;
+const CustomMapContainer = () => {
+  const [coord, setCoord] = useState([
+    [28.261501948498378, 83.97219108030293],
+    [28.192351839123205, 84.02524121244574],
+  ]);
+  const [passenger_no, setPassenger_no] = useState([]);
+  const [currentCoord, setCurrentCoord] = useState([]);
+  const busRoutes = coordinates;
   // useEffect(() => {
   //   const fetchData = async () => {
   //     try {
@@ -43,15 +50,14 @@ const page = () => {
   //   return () => clearInterval(intervalId); // Clean up interval on component unmount
   // }, []);
 
-  // const handleRouteChange = (RouteIndex) => {
-  //   console.log(busRoutes.coordinates);
-  //   setCurrentCoord(busRoutes.coordinates[RouteIndex]); // Route 1 selected
-  // };
+  const handleRouteChange = (RouteIndex) => {
+    console.log(busRoutes.coordinates);
+    setCurrentCoord(busRoutes.coordinates[RouteIndex]); // Route 1 selected
+  };
 
   return (
     <div>
-      <CustomMapContainer />
-      {/* {busRoutes.coordinates.map((_, index) => (
+      {busRoutes.coordinates.map((_, index) => (
         <button key={index} onClick={() => handleRouteChange(index)}>
           Route {index + 1}
         </button>
@@ -116,9 +122,9 @@ const page = () => {
             </div>
           </Popup>
         </Marker>
-      </MapContainer> */}
+      </MapContainer>
     </div>
   );
 };
 
-export default page;
+export default CustomMapContainer;
