@@ -1,91 +1,88 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import axios from "axios";
-import { useTable } from "react-table";
-import axiosInstance, { axiosAuthInstance } from "@/services/axios";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { axiosAuthInstance } from "@/services/axios";
 
-const page = () => {
-  const [data, setData] = useState([]);
-
+const Page = () => {
+  const [user, setUser] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
-      const result = await axiosAuthInstance.get("/user");
-      const list = result?.data?.data;
-      setData(list);
-      console.log(list);
+      try {
+        const response = await axiosAuthInstance.get("/user");
+        console.log(response);
+        const list = response?.data?.data;
+        setUser(list);
+      } catch (error) {
+        toast.error(error);
+      }
     };
     fetchData();
   }, []);
 
-  const columns = React.useMemo(
-    () => [
-      {
-        Header: "Name",
-        accessor: "username",
-      },
-      {
-        Header: "Email",
-        accessor: "email",
-      },
-      {
-        Header: "Phone-number",
-        accessor: "phoneNumber",
-      },
-    ],
-    []
-  );
-
-  const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
-    useTable({
-      columns,
-      data,
-    });
+  const HandlebtnForInfo = (userID) => {
+    console.log(userID);
+    const params = new URLSearchParams(window.location.search);
+    params.set("userID", userID);
+    window.location.href =
+      "/dashboard/superadmin-dashboard/Users/Info?" + params.toString();
+  };
 
   return (
-    <div className="mt-5 ml-10">
-      <h1 className="font-bold text-2xl mb-4">Users : </h1>
-      <div className="shadow-lg border">
-        <table
-          className="border-2 border-orange-600 table-auto bg-white shadow-md rounded-lg overflow-hidden"
-          {...getTableProps()}
-        >
-          <thead className=" border-2 border-slate-700 pt-2 bg-slate-600 text-white">
-            {headerGroups.map((headerGroup) => (
-              <tr {...headerGroup.getHeaderGroupProps()}>
-                {headerGroup.headers.map((column) => (
-                  <th
-                    className="border-slate-500 p-4"
-                    {...column.getHeaderProps()}
-                  >
-                    {column.render("Header")}
-                  </th>
-                ))}
+    <>
+      <ToastContainer />
+      <div className="container mx-auto p-2">
+        <h1 className="text-2xl font-bold mb-8 ">Users : </h1>
+        <div className="rounded-lg overflow-x-auto">
+          <table className="table-auto border-collapse border w-full">
+            <thead>
+              <tr className="py-4 text-white bg-slate-600">
+                <th className="px-8 py-6">Name</th>
+                <th className="px-6 py-4">Email</th>
+                <th className="px-6 py-4">Phone Number</th>
+                <th className="px-6 py-4">Citizenship Number</th>
+
+                <th className="px-6 py-4">ID</th>
+                <th className="px-6 py-4">Info</th>
               </tr>
-            ))}
-          </thead>
-          <tbody className="bg-slate-200" {...getTableBodyProps()}>
-            {rows.map((row) => {
-              prepareRow(row);
-              return (
-                <tr key={row.id} {...row.getRowProps()}>
-                  {row.cells.map((cell) => {
-                    return (
-                      <td
-                        className="border-2 border-slate-700 p-4"
-                        {...cell.getCellProps()}
-                      >
-                        {cell.render("Cell")}
-                      </td>
-                    );
-                  })}
+            </thead>
+            <tbody>
+              {user.map((user) => (
+                <tr
+                  className="bg-slate-200 border border-slate-900"
+                  key={user._id}
+                >
+                  <td className="border rounded-lg border-slate-900 px-10 py-8">
+                    {user.username}
+                  </td>
+                  <td className="border rounded-lg border-slate-900 px-6 py-3">
+                    {user.email}
+                  </td>
+                  <td className="border rounded-lg border-slate-900 px-6 py-3">
+                    {user.phoneNumber}
+                  </td>
+                  <td className="border rounded-lg border-slate-900 px-6 py-3">
+                    {user.citizenshipNumber}
+                  </td>
+                  <td className="border rounded-lg border-slate-900 px-6 py-3">
+                    {user._id}
+                  </td>
+                  <td className="border rounded-lg border-slate-900 px-6 py-3">
+                    <button
+                      className=" bg-slate-800 text-white hover:bg-slate-500 font-bold py-2 px-4 mt-3 rounded items-center my-2 hover:scale-105 duration-300"
+                      onClick={() => HandlebtnForInfo(user._id)}
+                    >
+                      Info
+                    </button>
+                  </td>
                 </tr>
-              );
-            })}
-          </tbody>
-        </table>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 
-export default page;
+export default Page;

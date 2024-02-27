@@ -33,14 +33,6 @@ const Page = () => {
     }
   };
 
-  const HandlebtnForInfo = (userID) => {
-    console.log(userID);
-    const params = new URLSearchParams(window.location.search);
-    params.set("userID", userID);
-    window.location.href =
-      "/dashboard/superadmin-dashboard/UnverifiedUsers/Info?" +
-      params.toString();
-  };
   // try{
   //   const response = await axios.post(
   //     `https://sahaj-yatra-api.onrender.com/api/v1/user/${userID}/verify/`
@@ -51,17 +43,16 @@ const Page = () => {
   // }
 
   return (
-    <div className=" container mx-auto p-6">
+    <div className="w-full p-6">
       <h1 className="text-3xl font-bold mb-8">Unverified Users :</h1>
       <div className="shadow-lg rounded-xl overflow-x-auto">
-        <table className="table-auto border-collapse border w-full">
+        <table className=" table-auto border-collapse border w-full">
           <thead>
-            <tr className="py-4 text-white bg-slate-600">
+            <tr className="w-full py-4 text-white bg-slate-600">
               <th className="px-6 py-4">Name</th>
               <th className="px-6 py-4">Email</th>
               <th className="px-6 py-4">Phone Number</th>
               <th className="px-8 py-4">Action</th>
-              <th className="px-8 py-4">View Info</th>
             </tr>
           </thead>
           <tbody>
@@ -76,14 +67,6 @@ const Page = () => {
                     onClick={() => HandlebtnForVerify(user._id)}
                   >
                     Verify
-                  </button>
-                </td>
-                <td className="border px-6 py-3">
-                  <button
-                    className=" bg-slate-800 text-white hover:bg-slate-500 font-bold py-2 px-4 mt-3 rounded items-center my-2 hover:scale-105 duration-300"
-                    onClick={() => HandlebtnForInfo(user._id)}
-                  >
-                    Info
                   </button>
                 </td>
               </tr>

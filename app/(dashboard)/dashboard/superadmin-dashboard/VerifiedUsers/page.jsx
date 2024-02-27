@@ -13,7 +13,6 @@ const Page = () => {
         const response = await axiosAuthInstance.get("/user/verified");
         const list = response?.data?.data;
         setVerified(list);
-        toast.success(response?.data?.message);
       } catch (error) {
         toast.error(error);
       }
