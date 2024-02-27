@@ -3,13 +3,11 @@ import Sidebar from "@/app/ui/Sidebar-superAdmin";
 
 const layout = ({ children }) => {
   return (
-    <div className="flex bg-violet-200 mt-2">
-      <div className=" bg-violet-500">
+    <div className="flex">
+      <div className=" bg-slate-700 ">
         <Sidebar />
       </div>
-      <div>
-        <div className="flex h-screen pl-96">{children}</div>
-      </div>
+      <div className="p-5 ">{children}</div>
     </div>
   );
 };

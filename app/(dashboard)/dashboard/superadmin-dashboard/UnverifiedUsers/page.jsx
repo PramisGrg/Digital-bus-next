@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { usePathname, useSearchParams } from "next/navigation";
+import { axiosAuthInstance } from "@/services/axios";
 
 const Page = () => {
   const pathname = usePathname();
@@ -11,9 +12,7 @@ const Page = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(
-          "https://sahaj-yatra-api.onrender.com/api/v1/user/unverified"
-        );
+        const response = await axiosAuthInstance.get("/user/unverified");
         const list = response?.data?.data;
         setUnverified(list);
       } catch (error) {
@@ -41,12 +40,12 @@ const Page = () => {
   // }
 
   return (
-    <div className="container mx-auto p-6">
-      <h1 className="text-2xl font-bold mb-4">Unverified Users</h1>
-      <div className="overflow-x-auto">
+    <div className=" container mx-auto p-6">
+      <h1 className="text-3xl font-bold mb-8">Unverified Users :</h1>
+      <div className="shadow-lg rounded-xl overflow-x-auto">
         <table className="table-auto border-collapse border w-full">
           <thead>
-            <tr className="py-4 bg-blue-400">
+            <tr className="py-4 text-white bg-slate-600">
               <th className="px-6 py-4">Name</th>
               <th className="px-6 py-4">Email</th>
               <th className="px-6 py-4">Phone Number</th>
@@ -55,13 +54,13 @@ const Page = () => {
           </thead>
           <tbody>
             {unverified.map((user) => (
-              <tr className="bg-blue-200" key={user.id}>
+              <tr className="bg-slate-200" key={user.id}>
                 <td className="border px-6 py-3">{user.username}</td>
                 <td className="border px-6 py-3">{user.email}</td>
                 <td className="border px-6 py-3">{user.phoneNumber}</td>
                 <td className="border px-6 py-3">
                   <button
-                    className=" bg-blue-600 text-white hover:bg-blue-400 font-bold py-2 px-4 mt-3 rounded items-center my-2 hover:scale-105 duration-300"
+                    className=" bg-slate-800 text-white hover:bg-slate-500 font-bold py-2 px-4 mt-3 rounded items-center my-2 hover:scale-105 duration-300"
                     onClick={() => Handlebtn(user._id)}
                   >
                     Verify

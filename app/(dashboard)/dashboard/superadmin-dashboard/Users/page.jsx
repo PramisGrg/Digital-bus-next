@@ -2,15 +2,14 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useTable } from "react-table";
+import axiosInstance, { axiosAuthInstance } from "@/services/axios";
 
 const page = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
-      const result = await axios.get(
-        "https://sahaj-yatra-api.onrender.com/api/v1/user/"
-      );
+      const result = await axiosAuthInstance.get("/user");
       const list = result?.data?.data;
       setData(list);
       console.log(list);
@@ -43,13 +42,14 @@ const page = () => {
     });
 
   return (
-    <div className="flex h-screen items-center justify-between">
-      <div>
+    <div className="mt-5 ml-10">
+      <h1 className="font-bold text-2xl mb-4">Users : </h1>
+      <div className="shadow-lg border">
         <table
           className="border-2 border-orange-600 table-auto bg-white shadow-md rounded-lg overflow-hidden"
           {...getTableProps()}
         >
-          <thead className=" border-2 border-slate-700 pt-2 bg-blue-400 text-white">
+          <thead className=" border-2 border-slate-700 pt-2 bg-slate-600 text-white">
             {headerGroups.map((headerGroup) => (
               <tr {...headerGroup.getHeaderGroupProps()}>
                 {headerGroup.headers.map((column) => (
@@ -63,7 +63,7 @@ const page = () => {
               </tr>
             ))}
           </thead>
-          <tbody className="bg-blue-200" {...getTableBodyProps()}>
+          <tbody className="bg-slate-200" {...getTableBodyProps()}>
             {rows.map((row) => {
               prepareRow(row);
               return (

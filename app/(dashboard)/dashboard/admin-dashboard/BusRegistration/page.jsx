@@ -1,10 +1,9 @@
 "use client";
 import React, { useState } from "react";
-import axios from "axios";
-import Image from "next/image";
-import BusStation from "@/assets/images/insidethebus.jpeg";
+import axiosInstance, { axiosAuthInstance } from "@/services/axios";
 import { ToastContainer, toast } from "react-toastify";
 import { useRouter } from "next/navigation";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function RegisterPage() {
   const [state, setState] = useState({
@@ -12,6 +11,7 @@ export default function RegisterPage() {
     busType: "",
     busRoute: "",
     busSeats: "",
+    busOwner: "",
   });
   const router = useRouter();
   const handleStateChange = (e) => {
@@ -28,10 +28,7 @@ export default function RegisterPage() {
     };
     console.log(userData);
     try {
-      const response = await axios.post(
-        "https://sahaj-yatra-api.onrender.com/api/v1/bus",
-        userData
-      );
+      const response = await axiosAuthInstance.post("/bus", userData);
 
       if (response?.status === 201) {
         toast.success(response?.data?.message, {
@@ -41,11 +38,7 @@ export default function RegisterPage() {
         });
       }
     } catch (error) {
-      if (error?.response?.status === 400) {
-        toast.error(error?.response?.data?.error);
-      } else if (error?.response?.status === 409) {
-        toast.error(error?.response?.data?.error);
-      }
+      console.log(error);
       console.log("registration failed: ", error);
     }
   };
@@ -53,59 +46,63 @@ export default function RegisterPage() {
   return (
     <>
       <ToastContainer />
-      <div className="p-20 rounded-2xl bg-violet-400">
-        <h2 className="text-3xl mb-10">Bus Registration</h2>
-        <p className="mb-6">
-          Create your account. It’s free and only take a minute
-        </p>
-        <form onSubmit={handleSubmitForm}>
-          <div>
-            <input
-              type="text"
-              placeholder="Bus Number"
-              className="rounded-md w-full border border-gray-400 p-2 mr-2"
-              onChange={handleStateChange}
-              name="busNumber"
-            ></input>
-          </div>
-          <div className="mt-5">
-            <input
-              type="text"
-              placeholder="Bus Type"
-              className=" rounded-md border border-gray-400 p-2 w-full"
-              onChange={handleStateChange}
-              name="busType"
-            ></input>
-          </div>
+      <div className="pl-96 flex h-screen items-center justify-center">
+        <div className="p-20 rounded-2xl bg-slate-500">
+          <h2 className="text-4xl mb-8 font-bold text-white">
+            Bus Registration
+          </h2>
+          <p className="text-white mb-4">
+            Register your Bus and become the partner of Sahaj Yatri
+          </p>
+          <form onSubmit={handleSubmitForm}>
+            <div>
+              <input
+                type="text"
+                placeholder="Bus Number"
+                className="rounded-md w-full border border-gray-400 p-2 mr-2"
+                onChange={handleStateChange}
+                name="busNumber"
+              ></input>
+            </div>
+            <div className="mt-5">
+              <input
+                type="text"
+                placeholder="Bus Type"
+                className=" rounded-md border border-gray-400 p-2 w-full"
+                onChange={handleStateChange}
+                name="busType"
+              ></input>
+            </div>
 
-          <div className="mt-5">
-            <input
-              type="text"
-              placeholder="Bus Route"
-              busRoute
-              className="rounded-md border border-gray-400 p-2 w-full"
-              onChange={handleStateChange}
-              name="busRoute"
-            ></input>
-          </div>
-          <div className="mt-5">
-            <input
-              type="text"
-              placeholder="Bus Seats"
-              className="rounded-md border border-gray-400 p-2 w-full"
-              onChange={handleStateChange}
-              name="busSeats"
-            ></input>
-          </div>
-          <div className="mt-5">
-            <button
-              type="submit"
-              className="w-full bg-blue-600 text-white hover:bg-blue-400 font-bold py-2 px-4 mt-3 rounded-md items-center my-2 hover:scale-105 duration-300"
-            >
-              Register Now
-            </button>
-          </div>
-        </form>
+            <div className="mt-5">
+              <input
+                type="text"
+                placeholder="Bus Route"
+                busRoute
+                className="rounded-md border border-gray-400 p-2 w-full"
+                onChange={handleStateChange}
+                name="busRoute"
+              ></input>
+            </div>
+            <div className="mt-5">
+              <input
+                type="text"
+                placeholder="Bus Seats"
+                className="rounded-md border border-gray-400 p-2 w-full"
+                onChange={handleStateChange}
+                name="busSeats"
+              ></input>
+            </div>
+            <div className="mt-5">
+              <button
+                type="submit"
+                className="w-full bg-slate-900 text-white hover:text-black hover:bg-slate-400 font-bold py-2 px-4 mt-3 rounded-md items-center my-2 hover:scale-105 duration-300"
+              >
+                Register Now
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
     </>
   );

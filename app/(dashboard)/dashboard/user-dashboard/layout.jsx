@@ -1,6 +1,5 @@
 import React from "react";
 import Sidebar from "@/app/ui/Sidebar-User";
-import { ToastContainer } from "react-toastify";
 
 const layout = ({ children }) => {
   return (
