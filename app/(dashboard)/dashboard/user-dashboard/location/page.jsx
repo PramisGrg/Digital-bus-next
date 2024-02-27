@@ -1,6 +1,4 @@
 "use client";
-"use client";
-
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import {
@@ -22,34 +20,34 @@ const Map = () => {
   const [passenger_no, setPassenger_no] = useState([]);
   const [currentCoord, setCurrentCoord] = useState([]);
   const busRoutes = coordinates;
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch("http://localhost:5000/map");
-        if (!response.ok) {
-          throw new Error("Failed to fetch coordinates");
-        }
-        const data = await response.json();
-        if (
-          Array.isArray(data.coordinates) &&
-          data.coordinates.length > 0 &&
-          Array.isArray(data.coordinates[0]) &&
-          data.coordinates[0].length === 2
-        ) {
-          setCoord(data.coordinates);
-          setPassenger_no(data.passengers);
-        } else {
-          throw new Error("Invalid coordinates format in API response");
-        }
-      } catch (error) {
-        console.error("Error fetching coordinates:", error);
-      }
-    };
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const response = await fetch("http://localhost:5000/map");
+  //       if (!response.ok) {
+  //         throw new Error("Failed to fetch coordinates");
+  //       }
+  //       const data = await response.json();
+  //       if (
+  //         Array.isArray(data.coordinates) &&
+  //         data.coordinates.length > 0 &&
+  //         Array.isArray(data.coordinates[0]) &&
+  //         data.coordinates[0].length === 2
+  //       ) {
+  //         setCoord(data.coordinates);
+  //         setPassenger_no(data.passengers);
+  //       } else {
+  //         throw new Error("Invalid coordinates format in API response");
+  //       }
+  //     } catch (error) {
+  //       console.error("Error fetching coordinates:", error);
+  //     }
+  //   };
 
-    const intervalId = setInterval(fetchData, 5000); // Fetch data every 5 seconds
+  //   const intervalId = setInterval(fetchData, 5000); // Fetch data every 5 seconds
 
-    return () => clearInterval(intervalId); // Clean up interval on component unmount
-  }, []);
+  //   return () => clearInterval(intervalId); // Clean up interval on component unmount
+  // }, []);
 
   const handleRouteChange = (RouteIndex) => {
     console.log(busRoutes.coordinates);
