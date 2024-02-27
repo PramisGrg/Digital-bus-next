@@ -5,6 +5,7 @@ import Image from "next/image";
 import BusStation from "@/assets/images/insidethebus.jpeg";
 import { ToastContainer, toast } from "react-toastify";
 import { useRouter } from "next/navigation";
+import axiosInstance from "@/services/axios";
 
 export default function RegisterPage() {
   const [state, setState] = useState({
@@ -30,10 +31,7 @@ export default function RegisterPage() {
     };
     console.log(userData);
     try {
-      const response = await axios.post(
-        "https://sahaj-yatra-api.onrender.com/api/v1/auth/register/",
-        userData
-      );
+      const response = await axiosInstance.post("/auth/register/", userData);
 
       if (response?.status === 201) {
         toast.success(response?.data?.message, {
