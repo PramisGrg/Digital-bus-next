@@ -1,7 +1,7 @@
 import React, { Children } from "react";
 import MenuLink from "@/app/ui/MenuLink";
 
-import { MdDashboard, MdWork } from "react-icons/md";
+import { MdDashboard, MdWork, MdLogout } from "react-icons/md";
 import { FaBus } from "react-icons/fa";
 import { GiBus } from "react-icons/gi";
 import { IoLocationOutline } from "react-icons/io5";

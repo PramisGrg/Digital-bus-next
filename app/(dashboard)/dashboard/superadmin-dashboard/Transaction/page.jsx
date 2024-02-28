@@ -5,11 +5,12 @@ import "react-toastify/dist/ReactToastify.css";
 import { axiosAuthInstance } from "@/services/axios";
 
 const Page = () => {
-  const [verified, setVerified] = useState([]);
+  const [transaction, setTransaction] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axiosAuthInstance.get("/user/verified");
+        const response = await axiosAuthInstance.get("/transaction/history");
+        console.log(response);
         const list = response?.data?.data;
         setVerified(list);
       } catch (error) {
@@ -21,7 +22,7 @@ const Page = () => {
 
   return (
     <>
-      <ToastContainer />
+      {/* <ToastContainer />
       <div className="container mx-auto p-6">
         <h1 className="text-2xl font-bold mb-8 ">Verified Users : </h1>
         <div className="rounded-lg overflow-x-auto">
@@ -61,7 +62,8 @@ const Page = () => {
             </tbody>
           </table>
         </div>
-      </div>
+      </div> */}
+      <h1>Transaction</h1>
     </>
   );
 };
