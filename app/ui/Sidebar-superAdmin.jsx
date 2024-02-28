@@ -28,11 +28,6 @@ const menuItems = [
         path: "/dashboard/superadmin-dashboard/VerifiedUsers",
         icon: <FaUserCheck />,
       },
-      {
-        title: "Transaction",
-        path: "/dashboard/superadmin-dashboard/Transaction",
-        icon: <MdAttachMoney />,
-      },
     ],
   },
 ];

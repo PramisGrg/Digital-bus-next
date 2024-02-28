@@ -10,9 +10,9 @@ const Page = () => {
     const fetchData = async () => {
       try {
         const response = await axiosAuthInstance.get("/transaction/history");
-        console.log(response);
-        const list = response?.data?.data;
-        setVerified(list);
+        console.log(response?.data?.message);
+        toast.success(response?.data?.message);
+        setTransaction(response?.data?.data);
       } catch (error) {
         toast.error(error);
       }
@@ -22,48 +22,44 @@ const Page = () => {
 
   return (
     <>
-      {/* <ToastContainer />
+      <ToastContainer />
       <div className="container mx-auto p-6">
-        <h1 className="text-2xl font-bold mb-8 ">Verified Users : </h1>
+        <h1 className="text-2xl font-bold mb-8 ">Transaction History : </h1>
         <div className="rounded-lg overflow-x-auto">
           <table className="table-auto border-collapse border w-full">
             <thead>
               <tr className="py-4 text-white bg-slate-600">
-                <th className="px-8 py-6">Name</th>
-                <th className="px-6 py-4">Email</th>
-                <th className="px-6 py-4">Phone Number</th>
+                <th className="px-8 py-6">UserID</th>
+                <th className="px-6 py-4">Transaction Date</th>
+                <th className="px-6 py-4">Transaction Type</th>
                 <th className="px-8 py-4">Amount</th>
-                <th className="px-8 py-4">RFID Number</th>
+                <th className="px-8 py-4">Remarks</th>
               </tr>
             </thead>
             <tbody>
-              {verified.map((user) => (
+              {transaction.map((user) => (
                 <tr
                   className="bg-slate-200 border border-slate-900"
-                  key={user._id}
+                  key={user.userId}
                 >
                   <td className="border rounded-lg border-slate-900 px-10 py-8">
-                    {user.username}
+                    {user.transactionDate}
                   </td>
                   <td className="border rounded-lg border-slate-900 px-6 py-3">
-                    {user.email}
-                  </td>
-                  <td className="border rounded-lg border-slate-900 px-6 py-3">
-                    {user.phoneNumber}
+                    {user.transactionType}
                   </td>
                   <td className="border rounded-lg border-slate-900 px-6 py-3">
                     {user.amount}
                   </td>
                   <td className="border rounded-lg border-slate-900 px-6 py-3">
-                    {user.rfidNumber}
+                    {user.remarks}
                   </td>
                 </tr>
               ))}
             </tbody>
           </table>
         </div>
-      </div> */}
-      <h1>Transaction</h1>
+      </div>{" "}
     </>
   );
 };

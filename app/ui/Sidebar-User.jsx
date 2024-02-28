@@ -2,7 +2,7 @@ import React from "react";
 import MenuLink from "@/app/ui/MenuLink";
 
 import { MdDashboard, MdAttachMoney, MdLogout } from "react-icons/md";
-import { FaLocationDot } from "react-icons/fa6";
+import { FaLocationDot, FaMoneyCheckDollar } from "react-icons/fa6";
 
 const menuItems = [
   {
@@ -22,6 +22,11 @@ const menuItems = [
         title: "Payment",
         path: "/dashboard/user-dashboard/payment",
         icon: <MdAttachMoney />,
+      },
+      {
+        title: "Transaction",
+        path: "/dashboard/user-dashboard/Transaction",
+        icon: <FaMoneyCheckDollar />,
       },
       {
         title: "Log out",

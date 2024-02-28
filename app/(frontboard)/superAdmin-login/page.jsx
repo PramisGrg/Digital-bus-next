@@ -43,12 +43,9 @@ export default function Home() {
       }
       //   const { token } = response.data;
     } catch (error) {
-      if (error?.response?.status === 400) {
-        toast.error(error?.response?.data?.error);
-      } else if (error?.response?.status === 409) {
-        toast.error(error?.response?.data?.error);
-      }
-      console.log("registration failed: ", error);
+      console.log(error?.response?.data?.error);
+      toast.error(error?.response?.data?.error);
+      setState(" ");
     }
   };
 

@@ -95,15 +95,6 @@ export default function RegisterPage() {
               ></input>
             </div>
             <div className="mt-5">
-              <input
-                type="text"
-                placeholder="Bus Owner"
-                className="rounded-md border border-gray-400 p-2 w-full"
-                onChange={handleStateChange}
-                name="busOwner"
-              ></input>
-            </div>
-            <div className="mt-5">
               <button
                 type="submit"
                 className="w-full bg-slate-900 text-white hover:text-black hover:bg-slate-400 font-bold py-2 px-4 mt-3 rounded-md items-center my-2 hover:scale-105 duration-300"
