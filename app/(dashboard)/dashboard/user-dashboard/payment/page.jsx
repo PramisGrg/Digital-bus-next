@@ -1,20 +1,23 @@
 "use client";
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import KhaltiCheckout from "khalti-checkout-web";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { axiosAuthInstance } from "@/services/axios";
-import { useGlobalContext } from "../page";
+import { useGlobalContext } from "../../../../../components/ContextApi";
 
 const verifyPayment = async (payload) => {
-  const { userID } = useGlobalContext();
-  console.log(userID);
+  const userID = useGlobalContext();
+  const [id, setId] = useState("");
+  setId(userID);
+  console.log(id);
+
   try {
-    const userId = "65c799df4a8f63309b7b3c42"; // You need to replace this with the actual userId
-    const payloadWithUserId = { ...payload, userId };
+    // const userID = useGlobalContext();
+    // console.log(userID);
+    const payloadWithUserId = { ...payload, id };
     const response = await axiosAuthInstance.post(
       "/transaction/verify-payment/",
-      // "http://172.0.18.89:8000/api/v1/transaction/verify-payment",
       payloadWithUserId
     );
     console.log(response);
@@ -44,9 +47,8 @@ const config = {
       } catch (error) {
         console.log(error);
       }
-    }, // onError handler is optional
+    },
     onError(error) {
-      // handle errors
       console.log(error);
     },
     onClose() {
@@ -68,12 +70,11 @@ const Page = () => {
       const checkout = new KhaltiCheckout(config);
       console.log(checkout);
     }
-  }, []); // Run only on component mount
+  }, []);
 
   const btnOnClick = (e) => {
     e.preventDefault();
     if (typeof window !== "undefined") {
-      // Your client-side code that uses window goes here
       const checkout = new KhaltiCheckout(config);
       checkout.show({ amount: 1000 });
     }

@@ -39,7 +39,6 @@ export default function Home() {
       }
     } catch (error) {
       toast.error(error?.response?.data?.error);
-      // Clear input fields when there's an error
       setState({ phoneNumber: "", password: "" });
     }
   };

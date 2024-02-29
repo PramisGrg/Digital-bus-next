@@ -3,14 +3,11 @@ import React, { useState } from "react";
 import Cookies from "js-cookie";
 import { axiosAuthInstance } from "@/services/axios";
 import { useRouter } from "next/navigation";
-import { useGlobalContext } from "../page";
 
 const LogoutButton = () => {
   const router = useRouter();
   const [showModal, setShowModal] = useState(false);
   const [error, setError] = useState(null);
-  const { userID } = useGlobalContext();
-  console.log(userID);
 
   const handleLogout = () => {
     setShowModal(true);
@@ -24,6 +21,7 @@ const LogoutButton = () => {
       const response = await axiosAuthInstance.post("/auth/logout/");
       if (response.status === 200) {
         Cookies.remove("token");
+        Cookies.remove("role");
         router.push("/");
       } else {
         setError("Failed to logout: " + response.data.message);

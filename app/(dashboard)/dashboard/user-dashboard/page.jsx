@@ -4,10 +4,9 @@ import { useEffect, useState } from "react";
 import React from "react";
 import UserProfile from "@/assets/images/UserProfile.jpeg";
 import Image from "next/image";
-import { useContext, createContext } from "react";
+// import { useContext, createContext } from "react";
 
-const GlobalContext = createContext();
-
+// const GlobalContext = createContext();
 const page = () => {
   const [state, setState] = useState(" ");
 
@@ -49,12 +48,23 @@ const page = () => {
 
 export default page;
 
-export const GlobalContextProvider = ({ children }) => {
-  const userID = "Pramis";
+// export const GlobalContextProvider = ({ children }) => {
+//   const [data, setData] = useState(" ");
+//   useEffect(() => {
+//     (async () => {
+//       try {
+//         const response = await axiosAuthInstance.get("/user/info");
+//         console.log(response?.data?.data?._id);
+//         setData(response?.data?.data?._id);
+//       } catch (error) {
+//         console.log(error);
+//       }
+//     })();
+//   }, []);
 
-  return (
-    <GlobalContext.Provider value="pramis">{children}</GlobalContext.Provider>
-  );
-};
+//   return (
+//     <GlobalContext.Provider value={data}>{children}</GlobalContext.Provider>
+//   );
+// };
 
-export const useGlobalContext = () => useContext(GlobalContext);
+// export const useGlobalContext = () => useContext(GlobalContext);
