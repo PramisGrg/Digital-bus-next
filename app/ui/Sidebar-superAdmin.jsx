@@ -1,7 +1,7 @@
 import React from "react";
 import MenuLink from "@/app/ui/MenuLink";
 
-import { MdDashboard, MdAttachMoney } from "react-icons/md";
+import { MdDashboard, MdLogout } from "react-icons/md";
 import { FaUser, FaUserLock, FaUserCheck } from "react-icons/fa";
 
 const menuItems = [
@@ -27,6 +27,11 @@ const menuItems = [
         title: "Verified Users",
         path: "/dashboard/superadmin-dashboard/VerifiedUsers",
         icon: <FaUserCheck />,
+      },
+      {
+        title: "Log out",
+        path: "/dashboard/superadmin-dashboard/Logout",
+        icon: <MdLogout />,
       },
     ],
   },

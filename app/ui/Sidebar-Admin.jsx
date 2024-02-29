@@ -31,18 +31,23 @@ const menuItems = [
         path: "/dashboard/admin-dashboard/BusLocation",
         icon: <IoLocationOutline className=" w-5 h-6" />,
       },
-    ],
-  },
-  {
-    title: "Analytics",
-    list: [
       {
-        title: "Revenue",
-        path: "/dashboard/admin-dashboard/revenue",
-        icon: <MdWork className=" w-5 h-6" />,
+        title: "Log out",
+        path: "/dashboard/admin-dashboard/Logout",
+        icon: <MdLogout />,
       },
     ],
   },
+  // {
+  //   title: "Analytics",
+  //   list: [
+  //     {
+  //       title: "Revenue",
+  //       path: "/dashboard/admin-dashboard/revenue",
+  //       icon: <MdWork className=" w-5 h-6" />,
+  //     },
+  //   ],
+  // },
 ];
 
 const Sidebar = () => {

@@ -20,7 +20,7 @@ const LogoutButton = () => {
       const response = await axiosAuthInstance.post("/auth/logout/");
       if (response.status === 200) {
         Cookies.remove("token");
-        router.push("/");
+        router.push("/admin-login");
       } else {
         setError("Failed to logout: " + response.data.message);
       }
@@ -33,7 +33,7 @@ const LogoutButton = () => {
     <div>
       <div className="pl-60 flex h-screen justify-center items-center">
         <h1 className="mr-8 font-bold text-xl">
-          Agian click here to User Logout :{" "}
+          Agian click here to Admin Logout :{" "}
         </h1>
         <button
           onClick={handleLogout}
