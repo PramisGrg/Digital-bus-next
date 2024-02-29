@@ -3,11 +3,14 @@ import React, { useState } from "react";
 import Cookies from "js-cookie";
 import { axiosAuthInstance } from "@/services/axios";
 import { useRouter } from "next/navigation";
+import { useGlobalContext } from "../page";
 
 const LogoutButton = () => {
   const router = useRouter();
   const [showModal, setShowModal] = useState(false);
   const [error, setError] = useState(null);
+  const { userID } = useGlobalContext();
+  console.log(userID);
 
   const handleLogout = () => {
     setShowModal(true);
@@ -16,6 +19,7 @@ const LogoutButton = () => {
   const confirmLogout = async () => {
     // Close the modal
     setShowModal(false);
+
     try {
       const response = await axiosAuthInstance.post("/auth/logout/");
       if (response.status === 200) {

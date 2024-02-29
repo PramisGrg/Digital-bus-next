@@ -9,6 +9,7 @@ import { setCookie } from "cookies-next";
 import Link from "next/link";
 import NavbarNew from "@/components/NavbarNew";
 import axiosInstance from "@/services/axios";
+import { GlobalContextProvider } from "./(dashboard)/dashboard/user-dashboard/page";
 
 export default function Home() {
   const [state, setState] = useState({
