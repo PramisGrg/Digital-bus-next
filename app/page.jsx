@@ -1,7 +1,6 @@
 "use client";
 
 import React, { FormEvent, use, useState } from "react";
-import axios from "axios";
 import Image from "next/image";
 import BusStation from "@/assets/images/insidethebus.jpeg";
 import { ToastContainer, toast } from "react-toastify";
@@ -35,13 +34,8 @@ export default function Home() {
         setCookie("token", response?.data?.token, { maxAge: 60 * 60 * 24 });
         setCookie("role", response?.data?.role, { maxAge: 60 * 60 * 24 });
 
-        toast.success(response?.data?.message, {
-          onClose: () => {
-            router.push("/dashboard/user-dashboard");
-          },
-        });
+        router.push("/dashboard/user-dashboard");
       }
-      //   const { token } = response.data;
     } catch (error) {
       toast.error(error?.response?.data?.error);
       // Clear input fields when there's an error

@@ -35,14 +35,8 @@ export default function Home() {
       if (response?.status === 200) {
         setCookie("token", response?.data?.token, { maxAge: 60 * 60 * 24 });
         setCookie("role", response?.data?.role, { maxAge: 60 * 60 * 24 });
-
-        toast.success(response?.data?.message, {
-          onClose: () => {
-            router.push("/dashboard/admin-dashboard");
-          },
-        });
+        router.push("/dashboard/admin-dashboard");
       }
-      const { token } = response.data;
     } catch (error) {
       toast.error(error?.response?.data?.message);
 

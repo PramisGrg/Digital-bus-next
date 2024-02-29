@@ -35,11 +35,7 @@ export default function Home() {
         setCookie("token", response?.data?.token, { maxAge: 60 * 60 * 24 });
         setCookie("role", response?.data?.role, { maxAge: 60 * 60 * 24 });
 
-        toast.success(response?.data?.message, {
-          onClose: () => {
-            router.push("/dashboard/superadmin-dashboard");
-          },
-        });
+        router.push("/dashboard/superadmin-dashboard");
       }
       //   const { token } = response.data;
     } catch (error) {
