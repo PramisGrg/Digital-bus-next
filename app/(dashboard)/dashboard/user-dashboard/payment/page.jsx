@@ -4,75 +4,55 @@ import KhaltiCheckout from "khalti-checkout-web";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { axiosAuthInstance } from "@/services/axios";
-import { useGlobalContext } from "../../../../../components/ContextApi";
-
-const verifyPayment = async (payload) => {
-  const userID = useGlobalContext();
-  const [id, setId] = useState("");
-  setId(userID);
-  console.log(id);
-
-  try {
-    // const userID = useGlobalContext();
-    // console.log(userID);
-    const payloadWithUserId = { ...payload, id };
-    const response = await axiosAuthInstance.post(
-      "/transaction/verify-payment/",
-      payloadWithUserId
-    );
-    console.log(response);
-    console.log(response?.status);
-    // if (response?.status === 200) {
-    //   router.push("/dashboard/admin-dashboard");
-    // }
-  } catch (error) {
-    toast.error(error?.message);
-  }
-};
-
-const config = {
-  // replace this key with yours
-  publicKey: "test_public_key_77bac81b32ed4e95b995bfbe502a3ab8",
-  productIdentity: "1234567890",
-  productName: "Drogon",
-  productUrl: "http://gameofthrones.com/buy/Dragons",
-  eventHandler: {
-    async onSuccess(payload) {
-      try {
-        await verifyPayment(payload);
-        console.log(payload);
-        // hit merchant api for initiating verfication
-        // window.location.href = "/dashboard/user-dashboard/";
-        // console.log(payload);
-      } catch (error) {
-        console.log(error);
-      }
-    },
-    onError(error) {
-      console.log(error);
-    },
-    onClose() {
-      console.log("widget is closing");
-    },
-  },
-  paymentPreference: [
-    "KHALTI",
-    "EBANKING",
-    "MOBILE_BANKING",
-    "CONNECT_IPS",
-    "SCT",
-  ],
-};
+import { useGlobalContext } from "../page";
 
 const Page = () => {
+  const userId = useGlobalContext();
+  const config = {
+    publicKey: "test_public_key_77bac81b32ed4e95b995bfbe502a3ab8",
+    productIdentity: "1234567890",
+    productName: "Drogon",
+    productUrl: "http://gameofthrones.com/buy/Dragons",
+    eventHandler: {
+      onSuccess: (payload) => {
+        console.log(userId);
+        const payloadWithUserId = { ...payload, userId };
+        axiosAuthInstance
+          .post("/transaction/verify-payment/", payloadWithUserId)
+          .then((response) => {
+            console.log(response);
+            console.log(response?.status);
+          })
+          .catch((error) => {
+            toast.error(error?.message);
+          });
+      },
+      onError: (error) => {
+        console.log(error);
+      },
+      onClose: () => {
+        console.log("widget is closing");
+      },
+    },
+
+    paymentPreference: [
+      "KHALTI",
+      "EBANKING",
+      "MOBILE_BANKING",
+      "CONNECT_IPS",
+      "SCT",
+    ],
+  };
+
   useEffect(() => {
     if (typeof window !== "undefined") {
       const checkout = new KhaltiCheckout(config);
       console.log(checkout);
     }
-  }, []);
+  }, [userId]);
 
   const btnOnClick = (e) => {
+    console.log(userId);
     e.preventDefault();
     if (typeof window !== "undefined") {
       const checkout = new KhaltiCheckout(config);

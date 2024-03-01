@@ -8,9 +8,7 @@ const layout = ({ children }) => {
       <div className=" bg-slate-700 ">
         <Sidebar />
       </div>
-      <div className="p-5">
-        <GlobalContextProvider>{children}</GlobalContextProvider>
-      </div>
+      <div className="p-5">{children}</div>
     </div>
   );
 };

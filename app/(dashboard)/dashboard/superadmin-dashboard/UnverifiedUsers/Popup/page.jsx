@@ -11,10 +11,6 @@ const page = () => {
     rfidNumber: "",
   });
 
-  // useEffect(() => {
-  //   const params = new URLSearchParams(window.location.search);
-  //   const userIdParam = params.get("userID");
-  // }, []);
 
   const handleRFIDChange = (e) => {
     setRFID({ ...RFID, [e.target.name]: e.target.value });

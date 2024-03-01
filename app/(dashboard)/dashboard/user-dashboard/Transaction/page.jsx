@@ -29,7 +29,6 @@ const Page = () => {
           <table className="table-auto border-collapse border w-full">
             <thead>
               <tr className="py-4 text-white bg-slate-600">
-                <th className="px-8 py-6">UserID</th>
                 <th className="px-6 py-4">Transaction Date</th>
                 <th className="px-6 py-4">Transaction Type</th>
                 <th className="px-8 py-4">Amount</th>
