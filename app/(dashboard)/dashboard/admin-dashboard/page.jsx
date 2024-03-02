@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import React from "react";
 import UserProfile from "@/assets/images/UserProfile.jpeg";
 import Image from "next/image";
-import Charts from "../../../../components/BarChart.jsx";
+import BarChart from "@/components/BarChart";
 
 const page = () => {
   const [state, setState] = useState(" ");
@@ -29,7 +29,7 @@ const page = () => {
         <div className="pl-4 pt-1 font-bold">{state.username}</div>
       </div>
       <div className="flex-grow">
-        <Charts />
+        <BarChart />
       </div>
     </div>
   );
