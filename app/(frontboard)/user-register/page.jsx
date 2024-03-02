@@ -1,6 +1,5 @@
 "use client";
 import React, { useState } from "react";
-import axios from "axios";
 import Image from "next/image";
 import BusStation from "@/assets/images/insidethebus.jpeg";
 import { ToastContainer, toast } from "react-toastify";

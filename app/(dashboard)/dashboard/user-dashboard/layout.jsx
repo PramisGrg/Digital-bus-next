@@ -1,6 +1,5 @@
 import React from "react";
 import Sidebar from "@/app/ui/Sidebar-User";
-import { GlobalContextProvider } from "@/components/ContextApi";
 
 const layout = ({ children }) => {
   return (

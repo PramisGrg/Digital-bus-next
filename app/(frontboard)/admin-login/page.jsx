@@ -59,14 +59,14 @@ export default function Home() {
               />
             </div>
             <div className="w-full lg:w-1/2 py-16 px-12">
-              <h2 className="text-3xl mb-4">Admin Login</h2>
+              <h2 className="text-3xl mb-4">BusOwner Login</h2>
               <p className="mb-4">Login to your account</p>
               <form onSubmit={handleLoginForm}>
                 <div className="mt-5">
                   <input
                     type="tel"
                     placeholder="Phone number"
-                    className="border border-gray-400 py-1 px-2 w-full"
+                    className="border  border-gray-400 py-1 px-2 w-full"
                     onChange={handleStateChange}
                     name="phoneNumber"
                   ></input>
@@ -80,22 +80,6 @@ export default function Home() {
                     name="password"
                   ></input>
                 </div>
-                <div className="mt-5">
-                  <input
-                    type="checkbox"
-                    className="border border-gray-400"
-                  ></input>
-                </div>
-                <span>
-                  I accept the{" "}
-                  <a href="#" className="text-blue-500 font-semibold">
-                    Terms of Use
-                  </a>{" "}
-                  &{" "}
-                  <a href="#" className="text-blue-500 font-semibold">
-                    Privacy Policy
-                  </a>
-                </span>
                 <div className="mt-5">
                   <button
                     type="submit"

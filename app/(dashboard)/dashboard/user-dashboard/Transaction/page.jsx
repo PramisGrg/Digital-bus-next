@@ -10,7 +10,7 @@ const Page = () => {
     const fetchData = async () => {
       try {
         const response = await axiosAuthInstance.get("/transaction/history");
-        console.log(response?.data?.message);
+        console.log(response);
         toast.success(response?.data?.message);
         setTransaction(response?.data?.data);
       } catch (error) {
@@ -39,7 +39,7 @@ const Page = () => {
               {transaction.map((user) => (
                 <tr
                   className="bg-slate-200 border border-slate-900"
-                  key={user.userId}
+                  key={user._id}
                 >
                   <td className="border rounded-lg border-slate-900 px-10 py-8">
                     {user.transactionDate}

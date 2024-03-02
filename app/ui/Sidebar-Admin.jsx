@@ -57,9 +57,9 @@ const Sidebar = () => {
         {menuItems.map((cat) => (
           <li className="text-white h-2/5" key={cat.title}>
             <div className="mt-2">
-              <span className="text-3xl font-bold my-4">{cat.title}</span>
+              <span className="text-3xl font-bold p-4">{cat.title}</span>
               {cat.list.map((item) => (
-                <MenuLink className="gap-2" item={item} key={item.title} />
+                <MenuLink className="gap-2 pl-4" item={item} key={item.title} />
               ))}
             </div>
           </li>

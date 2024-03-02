@@ -20,13 +20,14 @@ const page = () => {
   }, []);
 
   return (
-    <div>
-      <div className="flex mt-5 ml-5">
-        <div className="">
+    <div className=" flex-grow w-screen bg-red-500 flex flex-col">
+      <div className=" flex mt-5 ml-5">
+        <div>
           <Image src={UserProfile} height={30} width={30} alt="user profile" />
         </div>
         <div className="pl-4 pt-1 font-bold">{state.username}</div>
       </div>
+      <div className="flex-grow bg-slate-500">OP</div>
     </div>
   );
 };

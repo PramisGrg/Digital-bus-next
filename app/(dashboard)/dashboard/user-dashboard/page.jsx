@@ -4,10 +4,30 @@ import { useEffect, useState } from "react";
 import React from "react";
 import UserProfile from "@/assets/images/UserProfile.jpeg";
 import Image from "next/image";
-import { useContext, createContext } from "react";
+import PieChartPage from "@/components/pieChart";
+// const GlobalContext = createContext();
 
-const GlobalContext = createContext();
-const page = () => {
+// export const GlobalContextProvider = ({ children }) => {
+//   const [data, setData] = useState(" ");
+//   useEffect(() => {
+//     (async () => {
+//       try {
+//         const response = await axiosAuthInstance.get("/user/info");
+//         console.log(response?.data?.data?._id);
+//         setData(response?.data?.data?._id);
+//       } catch (error) {
+//         console.log(error);
+//       }
+//     })();
+//   }, []);
+
+//   return (
+//     <GlobalContext.Provider value={data}>{children}</GlobalContext.Provider>
+//   );
+// };
+// export const useGlobalContext = () => useContext(GlobalContext);
+
+const Page = () => {
   const [state, setState] = useState(" ");
 
   useEffect(() => {
@@ -35,29 +55,9 @@ const page = () => {
         <div className="text-gray-400 ml-4 mt-6 mr-48 text-xl">Amount :</div>
         <div className="ml-4 text-5xl mb-10">Rs {state.amount}</div>
       </div>
+      <PieChartPage />
     </div>
   );
 };
 
-export default page;
-
-export const GlobalContextProvider = ({ children }) => {
-  const [data, setData] = useState(" ");
-  useEffect(() => {
-    (async () => {
-      try {
-        const response = await axiosAuthInstance.get("/user/info");
-        console.log(response?.data?.data?._id);
-        setData(response?.data?.data?._id);
-      } catch (error) {
-        console.log(error);
-      }
-    })();
-  }, []);
-
-  return (
-    <GlobalContext.Provider value={data}>{children}</GlobalContext.Provider>
-  );
-};
-
-export const useGlobalContext = () => useContext(GlobalContext);
+export default Page;

@@ -44,7 +44,7 @@ const Sidebar = () => {
         {menuItems.map((cat) => (
           <li className="text-white h-2/5 mt-10" key={cat.title}>
             <div className="mt-8">
-              <span className="mt-36 text-white text-3xl font-bold  my-4">
+              <span className="mt-36 text-white text-3xl font-bold p-4">
                 {cat.title}
               </span>
               {cat.list.map((item) => (

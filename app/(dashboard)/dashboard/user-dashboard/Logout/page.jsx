@@ -3,13 +3,13 @@ import React, { useState } from "react";
 import Cookies from "js-cookie";
 import { axiosAuthInstance } from "@/services/axios";
 import { useRouter } from "next/navigation";
-import { useGlobalContext } from "../page";
+// import { useGlobalContext } from "../page";
 
 const LogoutButton = () => {
+  // const Data = useGlobalContext();
   const router = useRouter();
   const [showModal, setShowModal] = useState(false);
   const [error, setError] = useState(null);
-  // const Data = useGlobalContext();
   // console.log(Data);
   const handleLogout = () => {
     setShowModal(true);

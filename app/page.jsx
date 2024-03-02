@@ -9,7 +9,6 @@ import { setCookie } from "cookies-next";
 import Link from "next/link";
 import NavbarNew from "@/components/NavbarNew";
 import axiosInstance from "@/services/axios";
-import { GlobalContextProvider } from "./(dashboard)/dashboard/user-dashboard/page";
 
 export default function Home() {
   const [state, setState] = useState({
@@ -80,22 +79,6 @@ export default function Home() {
                     name="password"
                   ></input>
                 </div>
-                <div className="mt-5">
-                  <input
-                    type="checkbox"
-                    className="border border-gray-400"
-                  ></input>
-                </div>
-                <span>
-                  I accept the{" "}
-                  <a href="#" className="text-blue-500 font-semibold">
-                    Terms of Use
-                  </a>{" "}
-                  &{" "}
-                  <a href="#" className="text-blue-500 font-semibold">
-                    Privacy Policy
-                  </a>
-                </span>
                 <div className="mt-5">
                   <button
                     type="submit"

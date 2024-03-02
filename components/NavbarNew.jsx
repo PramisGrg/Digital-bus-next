@@ -13,7 +13,7 @@ const navlinks = [
     link: "/superAdmin-login",
   },
   {
-    title: "Admin Login",
+    title: "BusOwner Login",
     link: "/admin-login",
   },
 ];

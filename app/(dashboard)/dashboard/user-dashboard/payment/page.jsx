@@ -4,9 +4,10 @@ import KhaltiCheckout from "khalti-checkout-web";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { axiosAuthInstance } from "@/services/axios";
-import { useGlobalContext } from "../page";
+import { useGlobalContext } from "@/app/(dashboard)/page";
 
 const Page = () => {
+  const [ampunt, setAmount] = useState(0);
   const userId = useGlobalContext();
   const config = {
     publicKey: "test_public_key_77bac81b32ed4e95b995bfbe502a3ab8",
@@ -56,8 +57,12 @@ const Page = () => {
     e.preventDefault();
     if (typeof window !== "undefined") {
       const checkout = new KhaltiCheckout(config);
-      checkout.show({ amount: 1000 });
+      checkout.show({ amount: ampunt * 100 });
     }
+  };
+
+  const handleAmountChange = (e) => {
+    setAmount(e.target.value);
   };
 
   return (
@@ -70,6 +75,8 @@ const Page = () => {
         <div className="flex flex-col items-center justify-center">
           <form>
             <input
+              type="number"
+              onChange={handleAmountChange}
               placeholder="enter amount "
               className="w-full p-4 inline-block border rounded-md"
             ></input>

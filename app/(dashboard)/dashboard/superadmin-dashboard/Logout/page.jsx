@@ -20,6 +20,7 @@ const LogoutButton = () => {
       const response = await axiosAuthInstance.post("/auth/logout/");
       if (response.status === 200) {
         Cookies.remove("token");
+        Cookies.remove("role");
         router.push("/superAdmin-login");
       } else {
         setError("Failed to logout: " + response.data.message);
