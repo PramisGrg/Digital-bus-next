@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import React from "react";
 import UserProfile from "@/assets/images/UserProfile.jpeg";
 import Image from "next/image";
-import Charts from "../../../../components/BarChart";
+import Charts from "../../../../components/BarChart.jsx";
 
 const page = () => {
   const [state, setState] = useState(" ");
