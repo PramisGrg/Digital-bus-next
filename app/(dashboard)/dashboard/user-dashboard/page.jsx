@@ -43,19 +43,30 @@ const Page = () => {
   }, []);
 
   return (
-    <div>
-      <div className="flex">
-        <div>
-          <Image src={UserProfile} height={30} width={30} alt="user profile" />
+    <div className="flex">
+      {/* Left side content */}
+      <div className="flex flex-col mr-4">
+        <div className="flex">
+          <div>
+            <Image
+              src={UserProfile}
+              height={30}
+              width={30}
+              alt="user profile"
+            />
+          </div>
+          <div className="pl-4 pt-1 font-bold">{state.username}</div>
         </div>
-        <div className="pl-4 pt-1 font-bold">{state.username}</div>
+        <div className="mt-1">{state._id}</div>
+        <div className="h-40 shadow-lg rounded-xl flex flex-col justify-between w-fit mt-36">
+          <div className="text-gray-400 ml-4 mt-6 mr-48 text-xl">Amount :</div>
+          <div className="ml-4 text-5xl mb-10">Rs {state.amount}</div>
+        </div>
       </div>
-      <div className="mt-1">{state._id}</div>
-      <div className="h-40 shadow-lg rounded-xl flex flex-col justify-between w-fit mx-36 mt-36">
-        <div className="text-gray-400 ml-4 mt-6 mr-48 text-xl">Amount :</div>
-        <div className="ml-4 text-5xl mb-10">Rs {state.amount}</div>
+
+      <div className="ml-72">
+        <PieChartPage />
       </div>
-      <PieChartPage />
     </div>
   );
 };

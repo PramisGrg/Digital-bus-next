@@ -3,8 +3,8 @@ import Sidebar from "@/app/ui/Sidebar-User";
 
 const layout = ({ children }) => {
   return (
-    <div className="flex">
-      <div className=" bg-slate-700 ">
+    <div className="flex bg-[#e8edf0]">
+      <div className=" bg-[#17324b] ">
         <Sidebar />
       </div>
       <div className="p-5">{children}</div>

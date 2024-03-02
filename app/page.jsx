@@ -46,7 +46,7 @@ export default function Home() {
     <>
       <ToastContainer />
       <NavbarNew />
-      <section className="min-h-screen py-20 bg-gradient-to-r from-sky-500 to-indigo-200 ">
+      <section className="min-h-screen py-20 bg-[#e8edf0] ">
         <div className="container mx-auto">
           <div className="items-center flex flex-col lg:flex-row w-10/12 lg:w-8/12 bg-white rounded-xl mx-auto shadow-lg overflow-hidden">
             <div className="w-full lg:w-1/2 flex flex-col items-center justify-center p-12 bg-no-repeat bg-cover bg-center">
@@ -82,13 +82,19 @@ export default function Home() {
                 <div className="mt-5">
                   <button
                     type="submit"
-                    className="w-full bg-blue-600 text-white hover:bg-blue-400 font-bold py-2 px-4 mt-3 rounded items-center my-2 hover:scale-105 duration-300"
+                    className="w-full  bg-[#1c3c59] hover:bg-[#316da5] text-white font-bold py-2 px-4 rounded-2xl"
                   >
                     Login
                   </button>
-                </div>
-                <div className="text-center w-full bg-blue-600 text-white hover:bg-blue-400 font-bold py-2 px-4 mt-3 rounded items-center my-2 hover:scale-105 duration-300">
-                  <Link href="user-register">Register</Link>
+                  <p className="flex justify-center py-2 px-4 mt-3 items-center">
+                    Don't have an account!
+                    <Link
+                      className="hover:text-[#443c67] font-bold ml-2"
+                      href="user-register"
+                    >
+                      Register
+                    </Link>
+                  </p>
                 </div>
               </form>
             </div>
@@ -96,5 +102,58 @@ export default function Home() {
         </div>
       </section>
     </>
+    // <>
+    //   <ToastContainer />
+    //   <NavbarNew />
+    //   <section className="min-h-screen py-20 bg-[#e8edf0]">
+    //     <div className="container mx-auto flex items-center justify-center">
+    //       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 bg-white rounded-xl shadow-lg overflow-hidden">
+    //         <div className="flex justify-center items-center py-16 lg:p-12 bg-no-repeat bg-cover bg-center">
+    //           <Image
+    //             width={1000}
+    //             height={1000}
+    //             alt="Sajha Bus"
+    //             src={BusStation}
+    //           />
+    //         </div>
+    //         <div className="flex flex-col justify-center p-8 lg:p-12">
+    //           <h2 className="text-3xl mb-4 font-bold">User Login</h2>
+    //           <p className="text-lg mb-6">Login to your account</p>
+    //           <form onSubmit={handleLoginForm}>
+    //             <div className="mb-4">
+    //               <input
+    //                 type="tel"
+    //                 placeholder="Phone number"
+    //                 className="border border-gray-400 py-2 px-4 w-full rounded"
+    //                 onChange={handleStateChange}
+    //                 name="phoneNumber"
+    //               />
+    //             </div>
+    //             <div className="mb-6">
+    //               <input
+    //                 type="password"
+    //                 placeholder="Password"
+    //                 className="border border-gray-400 py-2 px-4 w-full rounded"
+    //                 onChange={handleStateChange}
+    //                 name="password"
+    //               />
+    //             </div>
+    //             <div className="mb-8">
+    //               <button
+    //                 type="submit"
+    //                 className="bg-blue-600 text-white hover:bg-blue-400 font-bold py-2 px-6 rounded-full transition duration-300"
+    //               >
+    //                 Login
+    //               </button>
+    //             </div>
+    //             <div className="text-center">
+    //               <Link href="user-register">Register</Link>
+    //             </div>
+    //           </form>
+    //         </div>
+    //       </div>
+    //     </div>
+    //   </section>
+    // </>
   );
 }

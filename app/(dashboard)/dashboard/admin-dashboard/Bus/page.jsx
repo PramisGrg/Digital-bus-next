@@ -1,6 +1,5 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import axiosInstance, { axiosAuthInstance } from "@/services/axios";
 
 const Page = () => {
@@ -8,7 +7,7 @@ const Page = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axiosInstance.get("/bus");
+        const response = await axiosAuthInstance.get("/bus/owner");
         const busList = response?.data?.data;
         setBus(busList);
       } catch (error) {

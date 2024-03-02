@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import React from "react";
 import UserProfile from "@/assets/images/UserProfile.jpeg";
 import Image from "next/image";
+import BarChart from "@/components/BarChart";
 
 const page = () => {
   const [state, setState] = useState(" ");
@@ -20,14 +21,16 @@ const page = () => {
   }, []);
 
   return (
-    <div className=" flex-grow w-screen bg-red-500 flex flex-col">
+    <div className=" flex-grow w-screen flex flex-col">
       <div className=" flex mt-5 ml-5">
         <div>
           <Image src={UserProfile} height={30} width={30} alt="user profile" />
         </div>
         <div className="pl-4 pt-1 font-bold">{state.username}</div>
       </div>
-      <div className="flex-grow bg-slate-500">OP</div>
+      <div className="flex-grow">
+        <BarChart />
+      </div>
     </div>
   );
 };

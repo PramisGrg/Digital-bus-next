@@ -2,12 +2,27 @@
 // pages/piechart.js
 import { useEffect, useRef, useState } from "react";
 import Chart from "chart.js/auto";
+import { axiosAuthInstance } from "@/services/axios";
 
 const PieChartPage = () => {
   const chartRef = useRef(null);
   const [chartInstance, setChartInstance] = useState(null);
+  const [credit, setCredit] = useState("");
+  const [debit, setDebit] = useState("");
 
   useEffect(() => {
+    const getPieChartData = async () => {
+      try {
+        const response = await axiosAuthInstance.get("/dashboard/user");
+        const amount = response?.data?.data;
+        console.log(amount);
+        setCredit(amount?.creditAmount);
+        setDebit(amount?.debitAmount);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getPieChartData();
     const ctx = chartRef.current.getContext("2d");
 
     // Destroy existing chart instance, if any
@@ -17,30 +32,25 @@ const PieChartPage = () => {
 
     // Create new chart instance
     const newChartInstance = new Chart(ctx, {
-      type: "pie",
+      type: "doughnut",
       data: {
-        labels: ["Credit", "Debit"],
+        labels: ["credit", "debit"],
         datasets: [
           {
             label: "My First Dataset",
-            data: [12, 19],
+            data: [60, 40],
             backgroundColor: [
-              "rgba(255, 99, 132, 0.6)",
-              "rgba(54, 162, 235, 0.6)",
-              "rgba(255, 206, 86, 0.6)",
-              "rgba(75, 192, 192, 0.6)",
-              "rgba(153, 102, 255, 0.6)",
+              "#4ba3c3", //credit
+              "#df7373", //Debit
             ],
-            borderColor: [
-              "rgba(255, 99, 132, 1)",
-              "rgba(54, 162, 235, 1)",
-              "rgba(255, 206, 86, 1)",
-              "rgba(75, 192, 192, 1)",
-              "rgba(153, 102, 255, 1)",
-            ],
-            borderWidth: 1,
+            borderColor: ["#e8edf0"],
+            borderWidth: 2,
           },
         ],
+      },
+      options: {
+        responsive: false,
+        maintainAspectRatio: true,
       },
     });
 
@@ -56,9 +66,9 @@ const PieChartPage = () => {
   }, []);
 
   return (
-    <div>
-      <h1>Pie Chart</h1>
-      <canvas ref={chartRef} />
+    <div className="">
+      <h1 className="mt-10 mb-20 font-bold text-3xl">Credit Vs Debit : </h1>
+      <canvas ref={chartRef} height={400} width={400} />
     </div>
   );
 };

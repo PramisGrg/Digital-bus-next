@@ -28,7 +28,7 @@ const Page = () => {
         <div className="rounded-lg overflow-x-auto">
           <table className="table-auto border-collapse border w-full">
             <thead>
-              <tr className="py-4 text-white bg-slate-600">
+              <tr className="py-4 text-white bg-[#17324b]">
                 <th className="px-6 py-4">Transaction Date</th>
                 <th className="px-6 py-4">Transaction Type</th>
                 <th className="px-8 py-4">Amount</th>
@@ -37,20 +37,17 @@ const Page = () => {
             </thead>
             <tbody>
               {transaction.map((user) => (
-                <tr
-                  className="bg-slate-200 border border-slate-900"
-                  key={user._id}
-                >
-                  <td className="border rounded-lg border-slate-900 px-10 py-8">
+                <tr className="bg-slate-200 border " key={user._id}>
+                  <td className="border rounded-lg  px-10 py-8">
                     {user.transactionDate}
                   </td>
-                  <td className="border rounded-lg border-slate-900 px-6 py-3">
+                  <td className="border rounded-lg  px-6 py-3">
                     {user.transactionType}
                   </td>
-                  <td className="border rounded-lg border-slate-900 px-6 py-3">
+                  <td className="border rounded-lg  px-6 py-3">
                     {user.amount}
                   </td>
-                  <td className="border rounded-lg border-slate-900 px-6 py-3">
+                  <td className="border rounded-lg  px-6 py-3">
                     {user.remarks}
                   </td>
                 </tr>

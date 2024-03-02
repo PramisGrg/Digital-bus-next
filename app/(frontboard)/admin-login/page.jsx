@@ -47,7 +47,7 @@ export default function Home() {
   return (
     <>
       <ToastContainer />
-      <section className="min-h-screen py-20 bg-gradient-to-r from-sky-500 to-indigo-200 ">
+      <section className="min-h-screen py-20 bg-[#e8edf0] ">
         <div className="container mx-auto">
           <div className="items-center flex flex-col lg:flex-row w-10/12 lg:w-8/12 bg-white rounded-xl mx-auto shadow-lg overflow-hidden">
             <div className="w-full lg:w-1/2 flex flex-col items-center justify-center p-12 bg-no-repeat bg-cover bg-center">
@@ -83,15 +83,19 @@ export default function Home() {
                 <div className="mt-5">
                   <button
                     type="submit"
-                    className="w-full bg-blue-600 text-white hover:bg-blue-400 font-bold py-2 px-4 mt-3 rounded items-center my-2 hover:scale-105 duration-300"
+                    className="w-full  bg-[#1c3c59] hover:bg-[#316da5] text-white font-bold py-2 px-4 rounded-2xl"
                   >
                     Login
                   </button>
-                </div>
-                <div className="text-center w-full bg-blue-600 text-white hover:bg-blue-400 font-bold py-2 px-4 mt-3 rounded items-center my-2 hover:scale-105 duration-300">
-                  <Link classname="text-center" href="/admin-register">
-                    Register
-                  </Link>
+                  <p className="flex justify-center py-2 px-4 mt-3 items-center">
+                    Don't have an account!
+                    <Link
+                      className="hover:text-[#5a5279] font-bold ml-2"
+                      href="/admin-register"
+                    >
+                      Register
+                    </Link>
+                  </p>
                 </div>
               </form>
             </div>

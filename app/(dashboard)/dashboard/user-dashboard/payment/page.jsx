@@ -84,7 +84,7 @@ const Page = () => {
               type="submit"
               id="payment-button"
               onClick={btnOnClick}
-              className=" w-full px-2 py-2 bg-slate-600 text-white hover:bg-blue-600 font-bold mt-10 rounded items-center my-2 hover:scale-105 duration-300"
+              className=" w-full px-2 py-2 bg-[#22496d] text-white hover:bg-[#3d7ab3] font-bold mt-10 rounded items-center my-2 duration-300"
             >
               Pay with khalti
             </button>

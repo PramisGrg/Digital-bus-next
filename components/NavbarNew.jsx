@@ -20,14 +20,14 @@ const navlinks = [
 
 function NavbarNew() {
   return (
-    <div className="shadow-lg w-full p-4">
+    <div className="shadow-lg w-full p-4 bg-[#1c3c59]">
       <div className="mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-centre justify-between h-16">
           <div className="flex items-center">
-            <div className="text-3xl pr-2 pt-2">
+            <div className="text-3xl pr-2 pt-2 text-slate-50">
               <FaBusAlt />
             </div>
-            <a href="/" className="font-bold pt-3 text-3xl">
+            <a href="/" className="font-bold pt-3 text-3xl text-white">
               सहज यात्रा
             </a>
           </div>
@@ -37,7 +37,7 @@ function NavbarNew() {
                 <Link
                   key={index}
                   href={x.link}
-                  className="text-xl text-gray-700 transition-all duration-500 hover:bg-blue-600 hover:text-white mt-2 px-3 py-2 rounded-md text-md cursor-pointer"
+                  className="text-xl text-white transition-all duration-500  hover:text-slate-400 mt-2 px-3 py-2 rounded-md text-md cursor-pointer"
                 >
                   {x.title}
                 </Link>
