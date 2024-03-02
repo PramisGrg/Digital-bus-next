@@ -20,7 +20,7 @@ ChartJS.register(
   Tooltip,
   Legend
 );
-const BarChart = () => {
+const BarChartPage = () => {
   const [chartData, setChartData] = useState({
     datasets: [],
   });
@@ -139,4 +139,4 @@ const BarChart = () => {
   );
 };
 
-export default BarChart;
+export default BarChartPage;
