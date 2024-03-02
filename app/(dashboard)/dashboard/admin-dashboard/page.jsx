@@ -1,10 +1,10 @@
 "use client";
-import axiosInstance, { axiosAuthInstance } from "@/services/axios";
+import { axiosAuthInstance } from "@/services/axios";
 import { useEffect, useState } from "react";
 import React from "react";
 import UserProfile from "@/assets/images/UserProfile.jpeg";
 import Image from "next/image";
-import BarChartPage from "@/components/BarChart";
+import BarChartComponent from "@/components/BarChartComponent";
 
 const page = () => {
   const [state, setState] = useState(" ");
@@ -29,7 +29,7 @@ const page = () => {
         <div className="pl-4 pt-1 font-bold">{state.username}</div>
       </div>
       <div className="flex-grow">
-        <BarChartPage />
+        <BarChartComponent />
       </div>
     </div>
   );
