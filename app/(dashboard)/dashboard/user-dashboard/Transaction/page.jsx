@@ -41,7 +41,15 @@ const Page = () => {
                   <td className="border rounded-lg  px-10 py-8">
                     {user.transactionDate}
                   </td>
-                  <td className="border rounded-lg  px-6 py-3">
+                  <td
+                    className={`border rounded-lg px-6 py-3 ${
+                      user.transactionType === "credit"
+                        ? "text-green-500"
+                        : user.transactionType === "debit"
+                        ? "text-red-500"
+                        : ""
+                    }`}
+                  >
                     {user.transactionType}
                   </td>
                   <td className="border rounded-lg  px-6 py-3">

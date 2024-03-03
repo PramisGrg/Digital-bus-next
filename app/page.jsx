@@ -5,7 +5,7 @@ import LoginPopup from "@/components/LoginPopup";
 import NavbarNew from "@/components/NavbarNew";
 import Footer from "@/components/Footer";
 import About from "@/components/About";
-import Cards from "@/components/cards";
+import Cards from "@/components/Cards";
 
 function Home() {
   const [isLoginOpen, setLoginOpen] = useState(false);
