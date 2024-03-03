@@ -12,7 +12,6 @@ import {
 import { useState, useEffect } from "react";
 import busIconUrl from "@/assets/bus_1.svg";
 import coordinates from "@/components/co-ordinates/map_2.json";
-import { axiosAuthInstance } from "@/services/axios";
 
 const Map = () => {
   const [busData, setBusData] = useState([]);
@@ -23,29 +22,31 @@ const Map = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axiosAuthInstance.get("/bus");
-        // if (!response.ok) {
-        //   throw new Error("Failed to fetch bus data");
-        // }
-        console.log(response);
-        setBusData(response?.data);
-        const coords = response?.data?.data.map((bus) => [
-          bus?.currentLocation?.latitude,
-          bus?.currentLocation?.longitude,
+        const response = await fetch(
+          "https://sahaj-yatra-api.onrender.com/api/v1/bus"
+        );
+        if (!response.ok) {
+          throw new Error("Failed to fetch bus data");
+        }
+        const data = await response.json();
+        console.log(data?.data);
+        setBusData(data.data);
+        const coords = data.data.map((bus) => [
+          bus.currentLocation.latitude,
+          bus.currentLocation.longitude,
         ]);
         setCoordinate(coords);
-        console.log(coordinate);
       } catch (error) {
         console.error("Error fetching bus data:", error);
       }
     };
 
-    const intervalId = setInterval(fetchData, 10000); // Fetch data every 5 seconds
+    const intervalId = setInterval(fetchData, 5000); // Fetch data every 5 seconds
     return () => clearInterval(intervalId); // Clean up interval on component unmount
   }, [busData]);
 
   const handleDropdownChange = (event) => {
-    const selectedIndex = parseInt(event.target.value); // Parse the value as an integer
+    const selectedIndex = parseInt(event.target.value);
     if (selectedIndex === -1) {
       setCurrentCoord([]);
     } else {
@@ -57,10 +58,10 @@ const Map = () => {
     <div>
       <MapContainer
         style={{
-          height: "60vh",
-          width: "65vw",
+          height: "80vh",
+          width: "80vw",
         }}
-        center={[28.261501948498378, 83.97219108030293]}
+        center={[28.2599325, 83.963232]}
         zoom={17}
         scrollWheelZoom={false}
       >
@@ -106,8 +107,7 @@ const Map = () => {
           >
             <Popup>
               <div>
-                {/* <p>Bus ID: {busData[index].busNumber}</p> */}
-                Bus
+                <p>{busData[index].busNumber}</p>
               </div>
             </Popup>
           </Marker>
