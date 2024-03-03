@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { axiosAuthInstance } from "@/services/axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -10,7 +10,6 @@ const page = () => {
   const [RFID, setRFID] = useState({
     rfidNumber: "",
   });
-
 
   const handleRFIDChange = (e) => {
     setRFID({ ...RFID, [e.target.name]: e.target.value });
@@ -24,13 +23,6 @@ const page = () => {
     const params = new URLSearchParams(window.location.search);
     const userIdParam = params.get("userID");
     console.log(userIdParam);
-
-    // useEffect(() => {
-    //   const params = new URLSearchParams(window.location.search);
-    //   const userIdParam = params.get("userID");
-    //   console.log(userIdParam);
-    // }, []);
-    //fetch the userID and pass it into the URL
     try {
       const response = await axiosAuthInstance.post(
         `/user/${userIdParam}/verify`,

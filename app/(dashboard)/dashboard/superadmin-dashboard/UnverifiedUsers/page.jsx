@@ -33,15 +33,6 @@ const Page = () => {
     }
   };
 
-  // try{
-  //   const response = await axios.post(
-  //     `https://sahaj-yatra-api.onrender.com/api/v1/user/${userID}/verify/`
-  //   );
-  //   console.log(response);
-  // } catch (error) {
-  //   console.log(error);
-  // }
-
   return (
     <div className="w-full p-6">
       <h1 className="text-3xl font-bold mb-8">Unverified Users :</h1>

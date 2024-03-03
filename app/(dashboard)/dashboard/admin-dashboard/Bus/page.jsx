@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import axiosInstance, { axiosAuthInstance } from "@/services/axios";
+import { axiosAuthInstance } from "@/services/axios";
 
 const Page = () => {
   const [bus, setBus] = useState([]);
