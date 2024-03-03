@@ -59,7 +59,7 @@ const Sidebar = () => {
             <div className="mt-2">
               <span className="text-3xl font-bold p-4">{cat.title}</span>
               {cat.list.map((item) => (
-                <MenuLink className="gap-2 pl-4" item={item} key={item.title} />
+                <MenuLink className="gap-2" item={item} key={item.title} />
               ))}
             </div>
           </li>

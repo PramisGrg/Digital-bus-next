@@ -119,8 +119,8 @@ const BarChartPage = () => {
         </div>
       </div>
       <div
-        className="w-full md:col-span-2 relative lg:h-[70vh] h-[50vh] m-auto border rounded-lg bg-white"
-        style={{ maxWidth: "70%", margin: "0 auto" }}
+        className="w-full md:col-span-2 relative lg:h-[70vh] h-[50vh] m-auto border rounded-lg bg-white ml-4"
+        style={{ maxWidth: "50%", margin: "0 auto" }}
       >
         <div className="absolute top-4 right-4 z-10">
           <select

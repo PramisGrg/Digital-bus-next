@@ -37,7 +37,6 @@ export default function Home() {
 
         router.push("/dashboard/superadmin-dashboard");
       }
-      //   const { token } = response.data;
     } catch (error) {
       console.log(error?.response?.data?.error);
       toast.error(error?.response?.data?.error);
@@ -48,7 +47,7 @@ export default function Home() {
   return (
     <>
       <ToastContainer />
-      <section className="min-h-screen py-20 bg-gradient-to-r from-sky-500 to-indigo-200 ">
+      <section className="min-h-screen py-20 bg-[#e8edf0] ">
         <div className="container mx-auto">
           <div className="items-center flex flex-col lg:flex-row w-10/12 lg:w-8/12 bg-white rounded-xl mx-auto shadow-lg overflow-hidden">
             <div className="w-full lg:w-1/2 flex flex-col items-center justify-center p-12 bg-no-repeat bg-cover bg-center">
@@ -82,25 +81,9 @@ export default function Home() {
                   ></input>
                 </div>
                 <div className="mt-5">
-                  <input
-                    type="checkbox"
-                    className="border border-gray-400"
-                  ></input>
-                </div>
-                <span>
-                  I accept the{" "}
-                  <a href="#" className="text-blue-500 font-semibold">
-                    Terms of Use
-                  </a>{" "}
-                  &{" "}
-                  <a href="#" className="text-blue-500 font-semibold">
-                    Privacy Policy
-                  </a>
-                </span>
-                <div className="mt-5">
                   <button
                     type="submit"
-                    className="w-full bg-blue-600 text-white hover:bg-blue-400 font-bold py-2 px-4 mt-3 rounded items-center my-2 hover:scale-105 duration-300"
+                    className="w-full bg-[#1c3c59] text-white hover:bg-[#316da5] font-bold py-2 px-4 mt-3 rounded items-center my-2 hover:scale-105 duration-300"
                   >
                     Login
                   </button>

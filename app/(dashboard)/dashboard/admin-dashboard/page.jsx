@@ -28,7 +28,7 @@ const page = () => {
         </div>
         <div className="pl-4 pt-1 font-bold">{state.username}</div>
       </div>
-      <div className="flex-grow">
+      <div className="">
         <BarChartComponent />
       </div>
     </div>

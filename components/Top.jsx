@@ -1,26 +1,9 @@
-"use client";
-import React, { useState } from "react";
+import react, { useRef } from "react";
 import { ReactTyped } from "react-typed";
-import LoginPopup from "@/components/LoginPopup";
-import NavbarNew from "@/components/NavbarNew";
-import Footer from "@/components/Footer";
-import About from "@/components/About";
-import Cards from "@/components/cards";
 
-function Home() {
-  const [isLoginOpen, setLoginOpen] = useState(false);
-
-  const handleGetStartedClick = () => {
-    setLoginOpen(true);
-  };
-
-  const handleCloseLogin = () => {
-    setLoginOpen(false);
-  };
-
+const Top = ({ GetStartedOnClick }) => {
   return (
     <div>
-      <NavbarNew />
       <div className="max-w-[800px] mt-[-96px] w-full h-screen mx-auto text-center flex flex-col justify-center">
         <p className="text-[#1c3c59] text-3xl font-bold p-2 mb-2">
           Travel with Sahaj Yatri
@@ -46,17 +29,13 @@ function Home() {
         </div>
         <button
           className="bg-[#203f5d] hover:bg-[#37638f] w-[200px] rounded-md font-medium my-6 mx-auto py-3 text-white"
-          onClick={handleGetStartedClick}
+          onClick={GetStartedOnClick}
         >
           Get Started
         </button>
       </div>
-      <LoginPopup isOpen={isLoginOpen} onClose={handleCloseLogin} />
-      <About />
-      <Cards />
-      <Footer />
     </div>
   );
-}
+};
 
-export default Home;
+export default Top;
