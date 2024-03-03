@@ -1,14 +1,13 @@
 "use client";
-
-import React, { FormEvent, use, useState } from "react";
-import Image from "next/image";
-import BusStation from "@/assets/images/insidethebus.jpeg";
-import { ToastContainer, toast } from "react-toastify";
+import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import { setCookie } from "cookies-next";
+import { ToastContainer, toast } from "react-toastify";
 import Link from "next/link";
 import NavbarNew from "@/components/NavbarNew";
 import axiosInstance from "@/services/axios";
+import Image from "next/image";
+import BusStation from "@/assets/images/bus.jpeg";
 
 export default function Home() {
   const [state, setState] = useState({
@@ -16,11 +15,13 @@ export default function Home() {
     password: "",
   });
   const router = useRouter();
+
   const handleStateChange = (e) => {
     setState({ ...state, [e.target.name]: e.target.value });
   };
 
   const handleLoginForm = async (e) => {
+    // Renamed function to handleSubmit
     e.preventDefault();
     const userData = {
       phoneNumber: state.phoneNumber,
@@ -102,58 +103,5 @@ export default function Home() {
         </div>
       </section>
     </>
-    // <>
-    //   <ToastContainer />
-    //   <NavbarNew />
-    //   <section className="min-h-screen py-20 bg-[#e8edf0]">
-    //     <div className="container mx-auto flex items-center justify-center">
-    //       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 bg-white rounded-xl shadow-lg overflow-hidden">
-    //         <div className="flex justify-center items-center py-16 lg:p-12 bg-no-repeat bg-cover bg-center">
-    //           <Image
-    //             width={1000}
-    //             height={1000}
-    //             alt="Sajha Bus"
-    //             src={BusStation}
-    //           />
-    //         </div>
-    //         <div className="flex flex-col justify-center p-8 lg:p-12">
-    //           <h2 className="text-3xl mb-4 font-bold">User Login</h2>
-    //           <p className="text-lg mb-6">Login to your account</p>
-    //           <form onSubmit={handleLoginForm}>
-    //             <div className="mb-4">
-    //               <input
-    //                 type="tel"
-    //                 placeholder="Phone number"
-    //                 className="border border-gray-400 py-2 px-4 w-full rounded"
-    //                 onChange={handleStateChange}
-    //                 name="phoneNumber"
-    //               />
-    //             </div>
-    //             <div className="mb-6">
-    //               <input
-    //                 type="password"
-    //                 placeholder="Password"
-    //                 className="border border-gray-400 py-2 px-4 w-full rounded"
-    //                 onChange={handleStateChange}
-    //                 name="password"
-    //               />
-    //             </div>
-    //             <div className="mb-8">
-    //               <button
-    //                 type="submit"
-    //                 className="bg-blue-600 text-white hover:bg-blue-400 font-bold py-2 px-6 rounded-full transition duration-300"
-    //               >
-    //                 Login
-    //               </button>
-    //             </div>
-    //             <div className="text-center">
-    //               <Link href="user-register">Register</Link>
-    //             </div>
-    //           </form>
-    //         </div>
-    //       </div>
-    //     </div>
-    //   </section>
-    // </>
   );
 }
