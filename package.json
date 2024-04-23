@@ -9,7 +9,6 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "aos": "^2.3.4",
     "axios": "^1.6.7",
     "chart.js": "^4.4.2",
     "cookies-next": "^4.1.1",
