@@ -11,7 +11,7 @@ import {
 } from "react-leaflet";
 import { useState, useEffect } from "react";
 import busIconUrl from "@/assets/bus_1.svg";
-import coordinates from "@/components/co-ordinates/map_2.json";
+// import coordinates from "@/components/co-ordinates/map_2.json";
 import { axiosAuthInstance } from "@/services/axios";
 
 const Map = () => {
