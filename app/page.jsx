@@ -1,4 +1,4 @@
-"use client";
+"use client"
 import React, { useState } from "react";
 import { ReactTyped } from "react-typed";
 import LoginPopup from "@/components/LoginPopup";
